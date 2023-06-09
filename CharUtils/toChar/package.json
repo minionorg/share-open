@@ -1,0 +1,7 @@
+{
+  "name": "tochar",
+  "version": "1.0.0",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
+  "typings": "../../typings/packages/CharUtils/toChar/index.d.ts"
+}

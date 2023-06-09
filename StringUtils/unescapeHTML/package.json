@@ -1,0 +1,7 @@
+{
+  "name": "unescapehtml",
+  "version": "1.0.0",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
+  "typings": "../../typings/packages/StringUtils/unescapeHTML/index.d.ts"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "stripall",
+  "version": "1.0.0",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
+  "typings": "../../typings/packages/StringUtils/stripAll/index.d.ts"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "getdaysinmonth",
+  "version": "1.0.0",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
+  "typings": "../../typings/packages/DateUtils/getDaysInMonth/index.d.ts"
+}

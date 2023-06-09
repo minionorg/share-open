@@ -1,0 +1,7 @@
+{
+  "name": "ismobile",
+  "version": "1.0.0",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
+  "typings": "../../typings/packages/Utils/isMobile/index.d.ts"
+}

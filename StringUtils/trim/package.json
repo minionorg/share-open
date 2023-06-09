@@ -1,0 +1,7 @@
+{
+  "name": "trim",
+  "version": "1.0.0",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
+  "typings": "../../typings/packages/StringUtils/trim/index.d.ts"
+}

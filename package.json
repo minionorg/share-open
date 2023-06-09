@@ -1,0 +1,16 @@
+{
+  "name": "@minionorg/share",
+  "version": "1.0.0",
+  "description": "函数库,工具库",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
+  "typings": "./typings/index.d.ts",
+  "keywords": [
+    "@minionorg",
+    "函数库",
+    "工具库",
+    "按需加载"
+  ],
+  "author": "Evan",
+  "license": "ISC"
+}

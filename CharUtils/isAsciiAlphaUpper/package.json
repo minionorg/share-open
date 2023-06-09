@@ -1,0 +1,7 @@
+{
+  "name": "isasciialphaupper",
+  "version": "1.0.0",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
+  "typings": "../../typings/packages/CharUtils/isAsciiAlphaUpper/index.d.ts"
+}

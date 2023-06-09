@@ -1,0 +1,22 @@
+import dateFormatHoc from './dateFormatHoc';
+import getDatePeriod from './getDatePeriod';
+import getDaysInMonth from './getDaysInMonth';
+import getFirstDateInMonth from './getFirstDateInMonth';
+import getLastDateInMonth from './getLastDateInMonth';
+import isDate from './isDate';
+import isLeapYear from './isLeapYear';
+import isTime from './isTime';
+import timeFormatHoc from './timeFormatHoc';
+export { dateFormatHoc, getDatePeriod, getDaysInMonth, getFirstDateInMonth, getLastDateInMonth, isDate, isLeapYear, isTime, timeFormatHoc, };
+declare const _default: {
+    dateFormatHoc: typeof dateFormatHoc;
+    getDatePeriod: (start: number, finish: number) => number;
+    getDaysInMonth: (date: Date) => number;
+    getFirstDateInMonth: (date: Date) => Date;
+    getLastDateInMonth: (date: Date) => Date;
+    isDate: typeof isDate;
+    isLeapYear: (date: Date) => boolean;
+    isTime: typeof isTime;
+    timeFormatHoc: typeof timeFormatHoc;
+};
+export default _default;

@@ -1,0 +1,7 @@
+{
+  "name": "stripend",
+  "version": "1.0.0",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
+  "typings": "../../typings/packages/StringUtils/stripEnd/index.d.ts"
+}
