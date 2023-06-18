@@ -1,38 +1,39 @@
 var s = Object.defineProperty;
-var a = (n, t, e) => t in n ? s(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
-var u = (n, t, e) => (a(n, typeof t != "symbol" ? t + "" : t, e), e);
-const o = function(n) {
-  return n.charAt(0).toUpperCase() + n.slice(1);
-}, i = function(n) {
-  if (!n)
+var a = (e, t, r) => t in e ? s(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
+var u = (e, t, r) => (a(e, typeof t != "symbol" ? t + "" : t, r), r);
+function i(e) {
+  return e.charAt(0).toUpperCase() + e.slice(1);
+}
+function o(e) {
+  if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${o(n)}]`;
+    return Object.prototype.toString.call(t) === `[object ${i(e)}]`;
   };
-};
-i("Function");
-i("Object");
-const l = function(n) {
-  if (!n)
+}
+function l(e) {
+  if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${o(n)}]`;
+    return Object.prototype.toString.call(t) === `[object ${i(e)}]`;
   };
-};
+}
+o("Function");
+o("Object");
 class c {
   constructor() {
   }
-  static notNull(t, e) {
+  static notNull(t, r) {
     if (t === null)
-      throw new SyntaxError(e || "The value must not be empty");
+      throw new SyntaxError(r || "The value must not be empty");
   }
-  static notEmpty(t, e) {
+  static notEmpty(t, r) {
     if (t.length === 0)
-      throw new SyntaxError(e || "The String must not be empty");
+      throw new SyntaxError(r || "The String must not be empty");
   }
   static errMsg(t) {
-    return function(e) {
-      return `${t}: ${e}`;
+    return function(r) {
+      return `${t}: ${r}`;
     };
   }
   static isString(t) {
@@ -52,20 +53,22 @@ class c {
   }
 }
 u(c, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
-function f(n) {
-  const t = c.isString(n);
+function f(e) {
+  const t = c.isString(e);
   return t === null ? null : t.replace(/(^\s*)|(\s*$)/g, "");
 }
-const g = function(n) {
-  return new RegExp("[A-Za-z]+", "g").test(n);
-}, p = function(n, t) {
-  let e = 0;
-  for (let r = 0; r < n.length; r++)
-    g(n[r]) ? e++ : e += t;
-  return e;
-}, m = function(n, t = !1, e = 2) {
-  return t ? p(f(n), e) : n.length;
+function g(e) {
+  return new RegExp("[A-Za-z]+", "g").test(e);
+}
+const p = function(e, t) {
+  let r = 0;
+  for (let n = 0; n < e.length; n++)
+    g(e[n]) ? r++ : r += t;
+  return r;
 };
+function m(e, t = !1, r = 2) {
+  return t ? p(f(e), r) : e.length;
+}
 export {
   m as default
 };

@@ -2,7 +2,10 @@
  * 判断是否为中文
  *
  * @param {string} str 字符串
- * @return {*}  {boolean}
+ * @return {boolean} 中文则为真
+ * @example
+ * isZH('中国') = true
+ * isZH('string') = false
  */
-declare const isZH: (str: string) => boolean;
+declare function isZH(str: string): boolean;
 export default isZH;

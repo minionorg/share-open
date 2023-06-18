@@ -1,8 +1,11 @@
 /**
  * 校验email
- * @param {string} str
- * @return {*}  {boolean}
- * @address https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+ *
+ * @param {string} str 将要检查的字符串
+ * @return {boolean} 是则为真
+ * @example
+ * isEmail('111@qq.com') = true
+ * isEmail('111@163.com') = true
  */
-declare const isEmail: (str: string) => boolean;
+declare function isEmail(str: string): boolean;
 export default isEmail;

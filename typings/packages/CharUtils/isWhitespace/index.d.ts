@@ -2,7 +2,7 @@
  * 检测字符是否为空白
  *
  * @param {string} ch 字符
- * @return {*} boolean
+ * @return {boolean} 空白为真
  * @example
  * isWhitespace(' ') = true
  * isWhitespace('\n') = true

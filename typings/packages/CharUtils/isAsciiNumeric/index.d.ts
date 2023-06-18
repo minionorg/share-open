@@ -1,9 +1,9 @@
 /**
  * 检查字符是否为 7位ASCII码 中的数字
+ * 资料: https://zh.wikipedia.org/wiki/ASCII
  *
  * @param {string} ch 字符
- * @return {*}  {true} 如果介于 48 和 57 之间（含），则为真
- * @link https://zh.wikipedia.org/wiki/ASCII
+ * @return {boolean} 如果介于 48 和 57 之间(含),则为真
  * @example
  * isAsciiNumeric('a')  = false
  * isAsciiNumeric('A')  = false

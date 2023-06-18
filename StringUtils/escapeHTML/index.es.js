@@ -1,4 +1,4 @@
-const r = function(t) {
+function r(t) {
   return t.replace(/[&<>'"]/g, (e) => ({
     "&": "&amp;",
     "<": "&lt;",
@@ -6,7 +6,7 @@ const r = function(t) {
     "'": "&#39;",
     '"': "&quot;"
   })[e] || e);
-};
+}
 export {
   r as default
 };

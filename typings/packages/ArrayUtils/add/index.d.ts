@@ -3,8 +3,8 @@
  *
  * @param {array} array 将要添加的数组
  * @param {any} item 将要添加的元素
- * @param {number} index 添加的位置，可选参数
- * @return {array}  返回新的数组
+ * @param {number} index 添加的位置,可选参数
+ * @return {array}  返回添加后的原数组
  * @example
  * add([], 'a') = ['a']
  * add([], 1) = [1]

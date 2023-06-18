@@ -1,38 +1,39 @@
 var p = Object.defineProperty;
-var f = (r, t, n) => t in r ? p(r, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : r[t] = n;
-var u = (r, t, n) => (f(r, typeof t != "symbol" ? t + "" : t, n), n);
-const c = function(r) {
+var f = (r, t, e) => t in r ? p(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
+var u = (r, t, e) => (f(r, typeof t != "symbol" ? t + "" : t, e), e);
+function a(r) {
   return r.charAt(0).toUpperCase() + r.slice(1);
-}, s = function(r) {
+}
+function c(r) {
   if (!r)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${c(r)}]`;
+    return Object.prototype.toString.call(t) === `[object ${a(r)}]`;
   };
-};
-s("Function");
-s("Object");
-const y = function(r) {
+}
+function y(r) {
   if (!r)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${c(r)}]`;
+    return Object.prototype.toString.call(t) === `[object ${a(r)}]`;
   };
-};
-class a {
+}
+c("Function");
+c("Object");
+class s {
   constructor() {
   }
-  static notNull(t, n) {
+  static notNull(t, e) {
     if (t === null)
-      throw new SyntaxError(n || "The value must not be empty");
+      throw new SyntaxError(e || "The value must not be empty");
   }
-  static notEmpty(t, n) {
+  static notEmpty(t, e) {
     if (t.length === 0)
-      throw new SyntaxError(n || "The String must not be empty");
+      throw new SyntaxError(e || "The String must not be empty");
   }
   static errMsg(t) {
-    return function(n) {
-      return `${t}: ${n}`;
+    return function(e) {
+      return `${t}: ${e}`;
     };
   }
   static isString(t) {
@@ -51,13 +52,13 @@ class a {
     return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(t);
   }
 }
-u(a, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
+u(s, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
 function h(r, t) {
-  const n = a.isString(r);
-  if ([null, "", ".", ",", "-", "+"].includes(n))
+  const e = s.isString(r);
+  if ([null, "", ".", ",", "-", "+"].includes(e))
     return !1;
-  const l = new RegExp("^(?:[-+])?(?:[0-9]+)?(?:\\.[0-9]*)?(?:[eE][\\+\\-]?(?:[0-9]+))?$"), e = t || {}, o = Object.prototype.hasOwnProperty, i = parseFloat(n.replace(",", "."));
-  return l.test(r) && (!o.call(e, "min") || i >= e.min) && (!o.call(e, "max") || i <= e.max) && (!o.call(e, "lt") || i < e.lt) && (!o.call(e, "gt") || i > e.gt);
+  const l = new RegExp("^(?:[-+])?(?:[0-9]+)?(?:\\.[0-9]*)?(?:[eE][\\+\\-]?(?:[0-9]+))?$"), n = t || {}, i = Object.prototype.hasOwnProperty, o = parseFloat(e.replace(",", "."));
+  return l.test(r) && (!i.call(n, "min") || o >= n.min) && (!i.call(n, "max") || o <= n.max) && (!i.call(n, "lt") || o < n.lt) && (!i.call(n, "gt") || o > n.gt);
 }
 export {
   h as default

@@ -1,24 +1,25 @@
 var l = Object.defineProperty;
-var c = (r, t, e) => t in r ? l(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
-var u = (r, t, e) => (c(r, typeof t != "symbol" ? t + "" : t, e), e);
-const o = function(r) {
+var f = (r, t, e) => t in r ? l(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
+var u = (r, t, e) => (f(r, typeof t != "symbol" ? t + "" : t, e), e);
+function o(r) {
   return r.charAt(0).toUpperCase() + r.slice(1);
-}, a = function(r) {
+}
+function a(r) {
   if (!r)
     throw new SyntaxError("type is must");
   return function(t) {
     return Object.prototype.toString.call(t) === `[object ${o(r)}]`;
   };
-};
+}
+function c(r) {
+  if (!r)
+    throw new SyntaxError("type is must");
+  return function(t) {
+    return Object.prototype.toString.call(t) === `[object ${o(r)}]`;
+  };
+}
 a("Function");
 a("Object");
-const f = function(r) {
-  if (!r)
-    throw new SyntaxError("type is must");
-  return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${o(r)}]`;
-  };
-};
 class n {
   constructor() {
   }
@@ -38,7 +39,7 @@ class n {
   static isString(t) {
     if (t === null)
       return null;
-    if (f("string")(t))
+    if (c("string")(t))
       return t;
     throw new TypeError("The parameter type is string");
   }

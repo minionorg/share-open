@@ -1,22 +1,23 @@
-const n = function(t) {
+function e(t) {
   return t.charAt(0).toUpperCase() + t.slice(1);
-}, e = function(t) {
+}
+function n(t) {
   if (!t)
     throw new SyntaxError("type is must");
   return function(r) {
-    return Object.prototype.toString.call(r) === `[object ${n(t)}]`;
+    return Object.prototype.toString.call(r) === `[object ${e(t)}]`;
   };
-};
-e("Function");
-e("Object");
-const o = function(t) {
+}
+function o(t) {
   if (!t)
     throw new SyntaxError("type is must");
   return function(r) {
-    return Object.prototype.toString.call(r) === `[object ${n(t)}]`;
+    return Object.prototype.toString.call(r) === `[object ${e(t)}]`;
   };
-};
-function c(t) {
+}
+n("Function");
+n("Object");
+function u(t) {
   if (t === null)
     return null;
   if (!o("Array")(t))
@@ -24,5 +25,5 @@ function c(t) {
   return [...t];
 }
 export {
-  c as default
+  u as default
 };

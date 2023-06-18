@@ -1,28 +1,30 @@
-var a = Object.defineProperty;
-var f = (e, t, n) => t in e ? a(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
-var u = (e, t, n) => (f(e, typeof t != "symbol" ? t + "" : t, n), n);
-const i = function(e) {
+var c = Object.defineProperty;
+var f = (e, t, n) => t in e ? c(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
+var o = (e, t, n) => (f(e, typeof t != "symbol" ? t + "" : t, n), n);
+function s(e) {
   return e.charAt(0).toUpperCase() + e.slice(1);
-}, $ = function(e) {
+}
+function $(e) {
   if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${i(e)}]`;
+    return Object.prototype.toString.call(t) === `[object ${s(e)}]`;
   };
-}, r = "(?:[0-9a-fA-F]{1,4})";
+}
+function l(e) {
+  if (!e)
+    throw new SyntaxError("type is must");
+  return function(t) {
+    return Object.prototype.toString.call(t) === `[object ${s(e)}]`;
+  };
+}
+const r = "(?:[0-9a-fA-F]{1,4})";
 new RegExp(
-  `^((?:${r}:){7}(?:${r}|:)|(?:${r}:){6}(?:${o}|:${r}|:)|(?:${r}:){5}(?::${o}|(:${r}){1,2}|:)|(?:${r}:){4}(?:(:${r}){0,1}:${o}|(:${r}){1,3}|:)|(?:${r}:){3}(?:(:${r}){0,2}:${o}|(:${r}){1,4}|:)|(?:${r}:){2}(?:(:${r}){0,3}:${o}|(:${r}){1,5}|:)|(?:${r}:){1}(?:(:${r}){0,4}:${o}|(:${r}){1,6}|:)|(?::((?::${r}){0,5}:${o}|(?::${r}){1,7}|:)))(%[0-9a-zA-Z-.:]{1,})?$`
+  `^((?:${r}:){7}(?:${r}|:)|(?:${r}:){6}(?:${u}|:${r}|:)|(?:${r}:){5}(?::${u}|(:${r}){1,2}|:)|(?:${r}:){4}(?:(:${r}){0,1}:${u}|(:${r}){1,3}|:)|(?:${r}:){3}(?:(:${r}){0,2}:${u}|(:${r}){1,4}|:)|(?:${r}:){2}(?:(:${r}){0,3}:${u}|(:${r}){1,5}|:)|(?:${r}:){1}(?:(:${r}){0,4}:${u}|(:${r}){1,6}|:)|(?::((?::${r}){0,5}:${u}|(?::${r}){1,7}|:)))(%[0-9a-zA-Z-.:]{1,})?$`
 );
 $("Function");
 $("Object");
-const l = function(e) {
-  if (!e)
-    throw new SyntaxError("type is must");
-  return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${i(e)}]`;
-  };
-};
-class c {
+class a {
   constructor() {
   }
   static notNull(t, n) {
@@ -54,14 +56,14 @@ class c {
     return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(t);
   }
 }
-u(c, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
-const s = "(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])", o = `(${s}[.]){3}${s}`, m = new RegExp(`^${o}$`);
+o(a, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
+const i = "(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])", u = `(${i}[.]){3}${i}`, m = new RegExp(`^${u}$`);
 function y(e) {
-  return c.isString(e) === null ? !1 : m.test(e);
+  return a.isString(e) === null ? !1 : m.test(e);
 }
 export {
-  o as IPv4AddressFormat,
+  u as IPv4AddressFormat,
   m as IPv4AddressRegExp,
-  s as IPv4SegmentFormat,
+  i as IPv4SegmentFormat,
   y as default
 };

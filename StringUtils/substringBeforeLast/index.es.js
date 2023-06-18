@@ -1,38 +1,39 @@
 var l = Object.defineProperty;
-var a = (n, t, e) => t in n ? l(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
-var i = (n, t, e) => (a(n, typeof t != "symbol" ? t + "" : t, e), e);
-const o = function(n) {
-  return n.charAt(0).toUpperCase() + n.slice(1);
-}, s = function(n) {
-  if (!n)
+var a = (e, t, n) => t in e ? l(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
+var i = (e, t, n) => (a(e, typeof t != "symbol" ? t + "" : t, n), n);
+function o(e) {
+  return e.charAt(0).toUpperCase() + e.slice(1);
+}
+function s(e) {
+  if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${o(n)}]`;
+    return Object.prototype.toString.call(t) === `[object ${o(e)}]`;
   };
-};
+}
+function f(e) {
+  if (!e)
+    throw new SyntaxError("type is must");
+  return function(t) {
+    return Object.prototype.toString.call(t) === `[object ${o(e)}]`;
+  };
+}
 s("Function");
 s("Object");
-const f = function(n) {
-  if (!n)
-    throw new SyntaxError("type is must");
-  return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${o(n)}]`;
-  };
-};
 class c {
   constructor() {
   }
-  static notNull(t, e) {
+  static notNull(t, n) {
     if (t === null)
-      throw new SyntaxError(e || "The value must not be empty");
+      throw new SyntaxError(n || "The value must not be empty");
   }
-  static notEmpty(t, e) {
+  static notEmpty(t, n) {
     if (t.length === 0)
-      throw new SyntaxError(e || "The String must not be empty");
+      throw new SyntaxError(n || "The String must not be empty");
   }
   static errMsg(t) {
-    return function(e) {
-      return `${t}: ${e}`;
+    return function(n) {
+      return `${t}: ${n}`;
     };
   }
   static isString(t) {
@@ -52,25 +53,25 @@ class c {
   }
 }
 i(c, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
-function u(n) {
-  const t = c.isString(n);
+function u(e) {
+  const t = c.isString(e);
   return t === null || t.length === 0;
 }
-function m(n, t = null) {
-  if (u(n))
-    return n;
+function m(e, t = null) {
+  if (u(e))
+    return e;
   if (typeof t == "number")
     if (t >= 32 && t < 127) {
-      const e = String.fromCharCode(t), r = n.lastIndexOf(e);
-      return r === -1 ? n : n.substring(0, r);
+      const n = String.fromCharCode(t), r = e.lastIndexOf(n);
+      return r === -1 ? e : e.substring(0, r);
     } else
       throw new RangeError("The separator decimal numbers not in 7-bit ASCII displayable characters");
   else {
     if (u(t))
       return "";
     if (typeof t == "string") {
-      const e = n.lastIndexOf(t);
-      return e === -1 ? n : n.substring(0, e);
+      const n = e.lastIndexOf(t);
+      return n === -1 ? e : e.substring(0, n);
     } else
       throw new TypeError("The separator type is string | number | null");
   }

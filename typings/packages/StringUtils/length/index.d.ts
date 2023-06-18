@@ -1,8 +1,8 @@
 /**
- * 获取字符串的长度，如果为null则为0
+ * 获取字符串的长度,如果为null则为0
  *
  * @param {string} ch 目标字符串
- * @return {number}  {number} 返回字符串长度，null为0
+ * @return {number} 返回字符串长度,null为0
  * @example
  * length(null) = 0
  * length('') = 0

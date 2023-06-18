@@ -1,12 +1,13 @@
-const n = function(t) {
+function n(t) {
   return t.charAt(0).toUpperCase() + t.slice(1);
-}, e = function(t) {
+}
+function e(t) {
   if (!t)
     throw new SyntaxError("type is must");
   return function(r) {
     return Object.prototype.toString.call(r) === `[object ${n(t)}]`;
   };
-};
+}
 function o(t, r) {
   if (!e("string")(t))
     throw new TypeError("The parameter type is string");

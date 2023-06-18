@@ -1,38 +1,39 @@
 var s = Object.defineProperty;
-var c = (r, t, n) => t in r ? s(r, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : r[t] = n;
-var e = (r, t, n) => (c(r, typeof t != "symbol" ? t + "" : t, n), n);
-const u = function(r) {
+var c = (r, t, e) => t in r ? s(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
+var n = (r, t, e) => (c(r, typeof t != "symbol" ? t + "" : t, e), e);
+function u(r) {
   return r.charAt(0).toUpperCase() + r.slice(1);
-}, i = function(r) {
+}
+function i(r) {
   if (!r)
     throw new SyntaxError("type is must");
   return function(t) {
     return Object.prototype.toString.call(t) === `[object ${u(r)}]`;
   };
-};
+}
+function a(r) {
+  if (!r)
+    throw new SyntaxError("type is must");
+  return function(t) {
+    return Object.prototype.toString.call(t) === `[object ${u(r)}]`;
+  };
+}
 i("Function");
 i("Object");
-const a = function(r) {
-  if (!r)
-    throw new SyntaxError("type is must");
-  return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${u(r)}]`;
-  };
-};
 class o {
   constructor() {
   }
-  static notNull(t, n) {
+  static notNull(t, e) {
     if (t === null)
-      throw new SyntaxError(n || "The value must not be empty");
+      throw new SyntaxError(e || "The value must not be empty");
   }
-  static notEmpty(t, n) {
+  static notEmpty(t, e) {
     if (t.length === 0)
-      throw new SyntaxError(n || "The String must not be empty");
+      throw new SyntaxError(e || "The String must not be empty");
   }
   static errMsg(t) {
-    return function(n) {
-      return `${t}: ${n}`;
+    return function(e) {
+      return `${t}: ${e}`;
     };
   }
   static isString(t) {
@@ -51,7 +52,7 @@ class o {
     return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(t);
   }
 }
-e(o, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
+n(o, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
 function f(r) {
   const t = o.isString(r);
   return t === null ? null : t.replace(/(^\s*)|(\s*$)/g, "");

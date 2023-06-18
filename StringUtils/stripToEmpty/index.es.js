@@ -1,17 +1,18 @@
 var h = Object.defineProperty;
 var p = (t, n, r) => n in t ? h(t, n, { enumerable: !0, configurable: !0, writable: !0, value: r }) : t[n] = r;
 var o = (t, n, r) => (p(t, typeof n != "symbol" ? n + "" : n, r), r);
-const c = function(t) {
+function l(t) {
   return t.charAt(0).toUpperCase() + t.slice(1);
-}, l = function(t) {
+}
+function c(t) {
   if (!t)
     throw new SyntaxError("type is must");
   return function(n) {
-    return Object.prototype.toString.call(n) === `[object ${c(t)}]`;
+    return Object.prototype.toString.call(n) === `[object ${l(t)}]`;
   };
-};
+}
 function g(t, n) {
-  if (!l("string")(t))
+  if (!c("string")(t))
     throw new TypeError("The parameter type is string");
   return n !== void 0 && t.length === 0 ? n : t.charAt(0);
 }
@@ -20,13 +21,13 @@ function s(t) {
   return n === " " || n === `
 ` || n === "\r" || n === "	" || n === "\f";
 }
-const a = function(t) {
+function a(t) {
   if (!t)
     throw new SyntaxError("type is must");
   return function(n) {
-    return Object.prototype.toString.call(n) === `[object ${c(t)}]`;
+    return Object.prototype.toString.call(n) === `[object ${l(t)}]`;
   };
-};
+}
 a("Function");
 a("Object");
 class i {
@@ -48,7 +49,7 @@ class i {
   static isString(n) {
     if (n === null)
       return null;
-    if (l("string")(n))
+    if (c("string")(n))
       return n;
     throw new TypeError("The parameter type is string");
   }

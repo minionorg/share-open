@@ -1,8 +1,12 @@
 /**
  * 校验是否含义特殊字符或emoji
- * @address https://edvins.io/how-to-strip-emojis-from-string-in-java-script
- * @param {string} str
- * @return {*}  {boolean}
+ *
+ * @param {string} str 将要检查的字符串
+ * @return {boolean} 有则为真
+ * @example
+ * hasEmoji('🎄 edvins.io') = true
+ * hasEmoji('🎄a🎄b🎄c🎄d🎄e🎄f🎄g🎄h') = true
+ * hasEmoji('正常字符串') = false
  */
-declare const hasEmoji: (str: string) => boolean;
+declare function hasEmoji(str: string): boolean;
 export default hasEmoji;

@@ -1,208 +1,249 @@
 var S = Object.defineProperty;
-var P = (t, n, e) => n in t ? S(t, n, { enumerable: !0, configurable: !0, writable: !0, value: e }) : t[n] = e;
-var f = (t, n, e) => (P(t, typeof n != "symbol" ? n + "" : n, e), e);
-const x = function(t) {
+var P = (t, e, n) => e in t ? S(t, e, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[e] = n;
+var g = (t, e, n) => (P(t, typeof e != "symbol" ? e + "" : e, n), n);
+function x(t) {
   return t.charAt(0).toUpperCase() + t.slice(1);
-}, p = function(t) {
+}
+function p(t) {
   if (!t)
     throw new SyntaxError("type is must");
-  return function(n) {
-    return Object.prototype.toString.call(n) === `[object ${x(t)}]`;
+  return function(e) {
+    return Object.prototype.toString.call(e) === `[object ${x(t)}]`;
   };
-}, b = function(t, n) {
-  const e = new RegExp("(^|&)" + n + "=([^&]*)(&|$)"), r = t.match(e);
+}
+function b(t, e) {
+  const n = new RegExp("(^|&)" + e + "=([^&]*)(&|$)"), r = t.match(n);
   return r !== null ? r[2] : null;
-}, R = "[\\u2700-\\u27BF]", N = "[\\uE000-\\uF8FF]", D = "\\uD83C[\\uDC00-\\uDFFF]", O = "\\uD83D[\\uDC00-\\uDFFF]", j = "[\\u2011-\\u26FF]", A = "\\uD83E[\\uDD10-\\uDDFF]", C = function(t) {
+}
+function y(t) {
+  if (!t)
+    throw new SyntaxError("type is must");
+  return function(e) {
+    return Object.prototype.toString.call(e) === `[object ${x(t)}]`;
+  };
+}
+function R(t, e = ".") {
+  if (!t)
+    return !1;
+  const n = t.trim().split(e);
+  for (const r of n)
+    if (!r || /\s/.test(r))
+      return !1;
+  return !0;
+}
+function A(t, e, n = void 0, r = ".") {
+  if (!y("String")(e))
+    throw new TypeError(`${e} is not string type`);
+  if (!R(e, r))
+    throw new Error(`Invalid: ${e}`);
+  const u = e.trim().split(r);
+  let s = t;
+  for (const i of u)
+    if (Array.isArray(s) && /^\d+$/.test(i)) {
+      const a = parseInt(i, 10);
+      if (a < s.length)
+        s = s[a];
+      else
+        return n;
+    } else if (typeof s == "object" && i in s)
+      s = s[i];
+    else
+      return n;
+  return s;
+}
+const N = "[\\u2700-\\u27BF]", D = "[\\uE000-\\uF8FF]", j = "\\uD83C[\\uDC00-\\uDFFF]", O = "\\uD83D[\\uDC00-\\uDFFF]", v = "[\\u2011-\\u26FF]", I = "\\uD83E[\\uDD10-\\uDDFF]";
+function C(t) {
   return RegExp(
-    `(${R}|${N}|${D}|${O}|${j}|${A})`,
+    `(${N}|${D}|${j}|${O}|${v}|${I})`,
     "g"
   ).test(t);
-}, I = function(t) {
+}
+function _(t) {
   return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
     t
   );
-};
-class a {
+}
+class l {
   constructor() {
   }
-  static notNull(n, e) {
-    if (n === null)
-      throw new SyntaxError(e || "The value must not be empty");
+  static notNull(e, n) {
+    if (e === null)
+      throw new SyntaxError(n || "The value must not be empty");
   }
-  static notEmpty(n, e) {
-    if (n.length === 0)
-      throw new SyntaxError(e || "The String must not be empty");
+  static notEmpty(e, n) {
+    if (e.length === 0)
+      throw new SyntaxError(n || "The String must not be empty");
   }
-  static errMsg(n) {
-    return function(e) {
-      return `${n}: ${e}`;
+  static errMsg(e) {
+    return function(n) {
+      return `${e}: ${n}`;
     };
   }
-  static isString(n) {
-    if (n === null)
+  static isString(e) {
+    if (e === null)
       return null;
-    if (F("string")(n))
-      return n;
+    if (y("string")(e))
+      return e;
     throw new TypeError("The parameter type is string");
   }
-  static isValidDateFormat(n) {
+  static isValidDateFormat(e) {
     return /(^(y{4}|y{2})[.\u002f-](m{1,2})[.\u002f-](d{1,2})$)|(^(m{1,2})[.\u002f-](d{1,2})[.\u002f-]((y{4}|y{2})$))|(^(d{1,2})[.\u002f-](m{1,2})[.\u002f-]((y{4}|y{2})$))/gi.test(
-      n
+      e
     );
   }
-  static isTimeFormat(n) {
-    return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(n);
+  static isTimeFormat(e) {
+    return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(e);
   }
 }
-f(a, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
-const y = "(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])", c = `(${y}[.]){3}${y}`, _ = new RegExp(`^${c}$`);
-function d(t) {
-  return a.isString(t) === null ? !1 : _.test(t);
+g(l, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
+const d = "(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])", c = `(${d}[.]){3}${d}`, L = new RegExp(`^${c}$`);
+function w(t) {
+  return l.isString(t) === null ? !1 : L.test(t);
 }
-function w(t, n, e = !1) {
-  if (t !== null && n !== null) {
-    const r = n.length;
-    return r > t.length ? !1 : v(t, e, 0, n, 0, r);
+function E(t, e, n = !1) {
+  if (t !== null && e !== null) {
+    const r = e.length;
+    return r > t.length ? !1 : U(t, n, 0, e, 0, r);
   } else
-    return t === n;
+    return t === e;
 }
-function v(t, n, e, r, u, o) {
-  n && (t = t.toLowerCase(), r = r.toLowerCase());
-  const i = e + o;
-  let m = 0;
-  for (let l = e; l < i; l++) {
-    if (t.charAt(l) !== r.charAt(u + m))
+function U(t, e, n, r, u, s) {
+  e && (t = t.toLowerCase(), r = r.toLowerCase());
+  const i = n + s;
+  let a = 0;
+  for (let f = n; f < i; f++) {
+    if (t.charAt(f) !== r.charAt(u + a))
       return !1;
-    m++;
+    a++;
   }
   return !0;
 }
-const L = /^\d{1,3}$/;
-function U(t) {
-  if (a.isString(t) === null)
+const T = /^\d{1,3}$/;
+function M(t) {
+  if (l.isString(t) === null)
     return !1;
-  const e = t.split("/");
-  return e.length !== 2 || !L.test(e[1]) || e[1].length > 1 && w(e[1], "0") || !d(e[0]) ? !1 : Number(e[1]) <= 32 && Number(e[1]) >= 0;
+  const n = t.split("/");
+  return n.length !== 2 || !T.test(n[1]) || n[1].length > 1 && E(n[1], "0") || !w(n[0]) ? !1 : Number(n[1]) <= 32 && Number(n[1]) >= 0;
 }
-const s = "(?:[0-9a-fA-F]{1,4})", T = new RegExp(
-  `^((?:${s}:){7}(?:${s}|:)|(?:${s}:){6}(?:${c}|:${s}|:)|(?:${s}:){5}(?::${c}|(:${s}){1,2}|:)|(?:${s}:){4}(?:(:${s}){0,1}:${c}|(:${s}){1,3}|:)|(?:${s}:){3}(?:(:${s}){0,2}:${c}|(:${s}){1,4}|:)|(?:${s}:){2}(?:(:${s}){0,3}:${c}|(:${s}){1,5}|:)|(?:${s}:){1}(?:(:${s}){0,4}:${c}|(:${s}){1,6}|:)|(?::((?::${s}){0,5}:${c}|(?::${s}){1,7}|:)))(%[0-9a-zA-Z-.:]{1,})?$`
+const o = "(?:[0-9a-fA-F]{1,4})", B = new RegExp(
+  `^((?:${o}:){7}(?:${o}|:)|(?:${o}:){6}(?:${c}|:${o}|:)|(?:${o}:){5}(?::${c}|(:${o}){1,2}|:)|(?:${o}:){4}(?:(:${o}){0,1}:${c}|(:${o}){1,3}|:)|(?:${o}:){3}(?:(:${o}){0,2}:${c}|(:${o}){1,4}|:)|(?:${o}:){2}(?:(:${o}){0,3}:${c}|(:${o}){1,5}|:)|(?:${o}:){1}(?:(:${o}){0,4}:${c}|(:${o}){1,6}|:)|(?::((?::${o}){0,5}:${c}|(?::${o}){1,7}|:)))(%[0-9a-zA-Z-.:]{1,})?$`
 );
-function E(t) {
-  return a.isString(t) === null ? !1 : T.test(t);
+function F(t) {
+  return l.isString(t) === null ? !1 : B.test(t);
 }
-const M = /^\d{1,3}$/;
-function B(t) {
-  if (a.isString(t) === null)
+const k = /^\d{1,3}$/;
+function z(t) {
+  if (l.isString(t) === null)
     return !1;
-  const e = t.split("/");
-  return e.length !== 2 || !M.test(e[1]) || e[1].length > 1 && w(e[1], "0") || !E(e[0]) ? !1 : Number(e[1]) <= 128 && Number(e[1]) >= 0;
-}
-const z = function(t) {
-  return /^((\+86)|(86))?(1)\d{10}$/.test("" + t);
-}, Z = function(t) {
-  return /^(\(\d{3,4}\)|\d{3,4}(-|\s)?)?\d{7,8}(-\d{1,4})?$/.test("" + t);
-};
-function H(t, n) {
-  if (a.isString(t) === null)
-    return !1;
-  const r = /^(?:[-+]?(?:0|[1-9][0-9]*))$/, u = /^[-+]?[0-9]+$/, o = n || {}, i = Object.prototype.hasOwnProperty, l = (Object.prototype.hasOwnProperty.call(o, "zeroes") && !o.zeroes ? r : u).test(t), $ = parseInt(t, 10);
-  return l && (!i.call(o, "min") || $ >= o.min) && (!i.call(o, "max") || $ <= o.max) && (!i.call(o, "lt") || $ < o.lt) && (!i.call(o, "gt") || $ > o.gt);
+  const n = t.split("/");
+  return n.length !== 2 || !k.test(n[1]) || n[1].length > 1 && E(n[1], "0") || !F(n[0]) ? !1 : Number(n[1]) <= 128 && Number(n[1]) >= 0;
 }
 function V(t) {
+  return /^((\+86)|(86))?(1)\d{10}$/.test("" + t);
+}
+function Z(t) {
+  return /^(\(\d{3,4}\)|\d{3,4}(-|\s)?)?\d{7,8}(-\d{1,4})?$/.test("" + t);
+}
+function H(t, e) {
+  if (l.isString(t) === null)
+    return !1;
+  const r = /^(?:[-+]?(?:0|[1-9][0-9]*))$/, u = /^[-+]?[0-9]+$/, s = e || {}, i = Object.prototype.hasOwnProperty, f = (Object.prototype.hasOwnProperty.call(s, "zeroes") && !s.zeroes ? r : u).test(t), m = parseInt(t, 10);
+  return f && (!i.call(s, "min") || m >= s.min) && (!i.call(s, "max") || m <= s.max) && (!i.call(s, "lt") || m < s.lt) && (!i.call(s, "gt") || m > s.gt);
+}
+function q(t) {
   return H(t, { min: 0, max: 65535 });
 }
-const q = function(t) {
+function K(t) {
   return /^\d{6}$/.test("" + t);
-}, K = p("Function");
-class g {
-  constructor(n, e = "nextSuccessor") {
-    f(this, "fn");
-    f(this, "nextNode");
-    f(this, "nextFlag");
-    if (!K(n))
-      throw new Error(`${n} is no a function`);
-    this.fn = n, this.nextNode = null, this.nextFlag = e;
+}
+const G = p("Function");
+class $ {
+  constructor(e, n = "nextSuccessor") {
+    g(this, "fn");
+    g(this, "nextNode");
+    g(this, "nextFlag");
+    if (!G(e))
+      throw new Error(`${e} is no a function`);
+    this.fn = e, this.nextNode = null, this.nextFlag = n;
   }
-  after(n, e = this.nextFlag) {
-    const r = n instanceof g;
-    return this.nextNode = r ? n : new g(n, e);
+  after(e, n = this.nextFlag) {
+    const r = e instanceof $;
+    return this.nextNode = r ? e : new $(e, n);
   }
-  start(...n) {
-    const e = this.fn.apply(this, n);
-    return e === this.nextFlag ? this.next.apply(this, n) : e;
+  start(...e) {
+    const n = this.fn.apply(this, e);
+    return n === this.nextFlag ? this.next.apply(this, e) : n;
   }
   next() {
     return this.nextNode && this.nextNode.start.apply(this.nextNode, arguments);
   }
 }
-const k = p("Object"), G = function(t) {
+const W = p("Object"), X = function(t) {
   return Object.getOwnPropertyNames(t).length === 0 ? !0 : "nextSuccessor";
-}, W = function(t) {
+}, J = function(t) {
   return Object.keys(t).length === 0;
-}, h = function(t) {
-  if (!k(t))
-    throw new Error(`${t} is no a object type`);
-  const n = new g(G);
-  return n.after(W), n.start(t);
 };
-function X(t) {
-  const n = /([^?=&]+)=([^&]*)/gi, e = {};
-  return t.replace(n, (r, u, o) => {
-    e[u] = o;
-  }), h(e) ? "nextSuccessor" : e;
-}
-function J(t) {
-  const n = t.split("?")[1], e = {}, r = n && n.split("&");
-  return r && r.reduce((u, o) => {
-    const i = o.split("=");
-    return u[i[0]] = i[1], u;
-  }, e), h(e) ? "nextSuccessor" : e;
+function h(t) {
+  if (!W(t))
+    throw new Error(`${t} is no a object type`);
+  const e = new $(X);
+  return e.after(J), e.start(t);
 }
 function Q(t) {
-  const n = t.split("?")[1], e = new URLSearchParams(n), r = {};
-  for (const u of e)
+  const e = /([^?=&]+)=([^&]*)/gi, n = {};
+  return t.replace(e, (r, u, s) => {
+    n[u] = s;
+  }), h(n) ? "nextSuccessor" : n;
+}
+function Y(t) {
+  const e = t.split("?")[1], n = {}, r = e && e.split("&");
+  return r && r.reduce((u, s) => {
+    const i = s.split("=");
+    return u[i[0]] = i[1], u;
+  }, n), h(n) ? "nextSuccessor" : n;
+}
+function tt(t) {
+  const e = t.split("?")[1], n = new URLSearchParams(e), r = {};
+  for (const u of n)
     r[u[0]] = u[1];
   return h(r) ? null : r;
 }
-const Y = function(t) {
-  const n = new g(X);
-  return n.after(J).after(Q), n.start(t);
-}, F = function(t) {
-  if (!t)
-    throw new SyntaxError("type is must");
-  return function(n) {
-    return Object.prototype.toString.call(n) === `[object ${x(t)}]`;
-  };
-}, nt = {
+function et(t) {
+  const e = new $(Q);
+  return e.after(Y).after(tt), e.start(t);
+}
+const rt = {
   createType: p,
   getURLValueByKey: b,
+  getValue: A,
   hasEmoji: C,
-  isEmail: I,
-  isIPv4: d,
-  isIPv4Range: U,
-  isIPv6: E,
-  isIPv6Range: B,
-  isMobile: z,
+  isEmail: _,
+  isIPv4: w,
+  isIPv4Range: M,
+  isIPv6: F,
+  isIPv6Range: z,
+  isMobile: V,
   isPhone: Z,
-  isPort: V,
-  isPostalCode: q,
-  queryURLParams: Y,
-  validateTypeHoc: F
+  isPort: q,
+  isPostalCode: K,
+  queryURLParams: et,
+  validateTypeHoc: y
 };
 export {
   p as createType,
-  nt as default,
+  rt as default,
   b as getURLValueByKey,
+  A as getValue,
   C as hasEmoji,
-  I as isEmail,
-  d as isIPv4,
-  U as isIPv4Range,
-  E as isIPv6,
-  B as isIPv6Range,
-  z as isMobile,
+  _ as isEmail,
+  w as isIPv4,
+  M as isIPv4Range,
+  F as isIPv6,
+  z as isIPv6Range,
+  V as isMobile,
   Z as isPhone,
-  V as isPort,
-  q as isPostalCode,
-  Y as queryURLParams,
-  F as validateTypeHoc
+  q as isPort,
+  K as isPostalCode,
+  et as queryURLParams,
+  y as validateTypeHoc
 };

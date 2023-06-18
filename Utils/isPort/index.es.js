@@ -1,24 +1,25 @@
 var y = Object.defineProperty;
 var m = (r, t, e) => t in r ? y(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
-var s = (r, t, e) => (m(r, typeof t != "symbol" ? t + "" : t, e), e);
-const u = function(r) {
+var u = (r, t, e) => (m(r, typeof t != "symbol" ? t + "" : t, e), e);
+function s(r) {
   return r.charAt(0).toUpperCase() + r.slice(1);
-}, c = function(r) {
+}
+function c(r) {
   if (!r)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${u(r)}]`;
+    return Object.prototype.toString.call(t) === `[object ${s(r)}]`;
   };
-};
+}
+function g(r) {
+  if (!r)
+    throw new SyntaxError("type is must");
+  return function(t) {
+    return Object.prototype.toString.call(t) === `[object ${s(r)}]`;
+  };
+}
 c("Function");
 c("Object");
-const g = function(r) {
-  if (!r)
-    throw new SyntaxError("type is must");
-  return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${u(r)}]`;
-  };
-};
 class a {
   constructor() {
   }
@@ -51,7 +52,7 @@ class a {
     return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(t);
   }
 }
-s(a, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
+u(a, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
 function h(r, t) {
   if (a.isString(r) === null)
     return !1;

@@ -1,25 +1,26 @@
-var l = Object.defineProperty;
-var f = (n, t, e) => t in n ? l(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
+var c = Object.defineProperty;
+var f = (n, t, e) => t in n ? c(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
 var i = (n, t, e) => (f(n, typeof t != "symbol" ? t + "" : t, e), e);
-const o = function(n) {
+function o(n) {
   return n.charAt(0).toUpperCase() + n.slice(1);
-}, s = function(n) {
+}
+function s(n) {
   if (!n)
     throw new SyntaxError("type is must");
   return function(t) {
     return Object.prototype.toString.call(t) === `[object ${o(n)}]`;
   };
-};
+}
+function a(n) {
+  if (!n)
+    throw new SyntaxError("type is must");
+  return function(t) {
+    return Object.prototype.toString.call(t) === `[object ${o(n)}]`;
+  };
+}
 s("Function");
 s("Object");
-const a = function(n) {
-  if (!n)
-    throw new SyntaxError("type is must");
-  return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${o(n)}]`;
-  };
-};
-class c {
+class l {
   constructor() {
   }
   static notNull(t, e) {
@@ -51,9 +52,9 @@ class c {
     return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(t);
   }
 }
-i(c, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
+i(l, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
 function u(n) {
-  const t = c.isString(n);
+  const t = l.isString(n);
   return t === null || t.length === 0;
 }
 function g(n, t = null) {

@@ -1,122 +1,123 @@
 var h = Object.defineProperty;
-var p = (t, n, r) => n in t ? h(t, n, { enumerable: !0, configurable: !0, writable: !0, value: r }) : t[n] = r;
-var o = (t, n, r) => (p(t, typeof n != "symbol" ? n + "" : n, r), r);
-const l = function(t) {
+var p = (t, r, n) => r in t ? h(t, r, { enumerable: !0, configurable: !0, writable: !0, value: n }) : t[r] = n;
+var o = (t, r, n) => (p(t, typeof r != "symbol" ? r + "" : r, n), n);
+function l(t) {
   return t.charAt(0).toUpperCase() + t.slice(1);
-}, c = function(t) {
+}
+function c(t) {
   if (!t)
     throw new SyntaxError("type is must");
-  return function(n) {
-    return Object.prototype.toString.call(n) === `[object ${l(t)}]`;
+  return function(r) {
+    return Object.prototype.toString.call(r) === `[object ${l(t)}]`;
   };
-};
-function y(t, n) {
+}
+function y(t, r) {
   if (!c("string")(t))
     throw new TypeError("The parameter type is string");
-  return n !== void 0 && t.length === 0 ? n : t.charAt(0);
+  return r !== void 0 && t.length === 0 ? r : t.charAt(0);
 }
 function s(t) {
-  const n = y(t);
-  return n === " " || n === `
-` || n === "\r" || n === "	" || n === "\f";
+  const r = y(t);
+  return r === " " || r === `
+` || r === "\r" || r === "	" || r === "\f";
 }
-const a = function(t) {
+function a(t) {
   if (!t)
     throw new SyntaxError("type is must");
-  return function(n) {
-    return Object.prototype.toString.call(n) === `[object ${l(t)}]`;
+  return function(r) {
+    return Object.prototype.toString.call(r) === `[object ${l(t)}]`;
   };
-};
+}
 a("Function");
 a("Object");
 class u {
   constructor() {
   }
-  static notNull(n, r) {
-    if (n === null)
-      throw new SyntaxError(r || "The value must not be empty");
+  static notNull(r, n) {
+    if (r === null)
+      throw new SyntaxError(n || "The value must not be empty");
   }
-  static notEmpty(n, r) {
-    if (n.length === 0)
-      throw new SyntaxError(r || "The String must not be empty");
+  static notEmpty(r, n) {
+    if (r.length === 0)
+      throw new SyntaxError(n || "The String must not be empty");
   }
-  static errMsg(n) {
-    return function(r) {
-      return `${n}: ${r}`;
+  static errMsg(r) {
+    return function(n) {
+      return `${r}: ${n}`;
     };
   }
-  static isString(n) {
-    if (n === null)
+  static isString(r) {
+    if (r === null)
       return null;
-    if (c("string")(n))
-      return n;
+    if (c("string")(r))
+      return r;
     throw new TypeError("The parameter type is string");
   }
-  static isValidDateFormat(n) {
+  static isValidDateFormat(r) {
     return /(^(y{4}|y{2})[.\u002f-](m{1,2})[.\u002f-](d{1,2})$)|(^(m{1,2})[.\u002f-](d{1,2})[.\u002f-]((y{4}|y{2})$))|(^(d{1,2})[.\u002f-](m{1,2})[.\u002f-]((y{4}|y{2})$))/gi.test(
-      n
+      r
     );
   }
-  static isTimeFormat(n) {
-    return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(n);
+  static isTimeFormat(r) {
+    return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(r);
   }
 }
 o(u, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
 function f(t) {
-  const n = u.isString(t);
-  return n === null ? 0 : n.length;
+  const r = u.isString(t);
+  return r === null ? 0 : r.length;
 }
-function g(t, n = null) {
-  let r = f(t);
-  if (r === 0)
+function g(t, r = null) {
+  let n = f(t);
+  if (n === 0)
     return t;
   {
-    const e = u.isString(n);
+    const e = u.isString(r);
     if (e === null)
-      for (; r !== 0 && s(t.charAt(r - 1)); )
-        --r;
+      for (; n !== 0 && s(t.charAt(n - 1)); )
+        --n;
     else {
       if (e.length === 0)
         return t;
-      for (; r !== 0 && e.indexOf(t.charAt(r - 1)) !== -1; )
-        --r;
+      for (; n !== 0 && e.indexOf(t.charAt(n - 1)) !== -1; )
+        --n;
     }
-    return t.substring(0, r);
+    return t.substring(0, n);
   }
 }
-function w(t, n = null) {
-  const r = f(t);
-  if (r === 0)
+function w(t, r = null) {
+  const n = f(t);
+  if (n === 0)
     return t;
   {
     let e = 0;
-    const i = u.isString(n);
+    const i = u.isString(r);
     if (i === null)
-      for (; e !== r && s(t.charAt(e)); )
+      for (; e !== n && s(t.charAt(e)); )
         ++e;
     else {
       if (i.length === 0)
         return t;
-      for (; e !== r && i.indexOf(t.charAt(e)) !== -1; )
+      for (; e !== n && i.indexOf(t.charAt(e)) !== -1; )
         ++e;
     }
     return t.substring(e);
   }
 }
-function m(t, n = null) {
-  return t = w(t, n), g(t, n);
+function m(t, r = null) {
+  return t = w(t, r), g(t, r);
 }
-function A(t, n = null) {
+function A(t, r = null) {
   if (t === null)
     return null;
   if (!Array.isArray(t))
     throw new TypeError("The paramter type is array");
-  const r = t.length;
-  if (r === 0)
+  const n = t.length;
+  if (n === 0)
     return t;
   const e = [];
-  for (let i = 0; i < r; i++)
-    e.push(m(t[i], n));
+  for (let i = 0; i < n; i++)
+    e.push(m(t[i], r));
   return e;
 }
 export {

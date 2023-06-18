@@ -1,9 +1,9 @@
 /**
- * 将字符转换为它所表示的整数，如果字符不是数字则抛出异常
+ * 将字符转换为它所表示的整数,如果字符不是数字则抛出异常
  *
  * @param {string} ch 要转换的字符
- * @param {*} defaultValue 如果字符不是数字，则使用的默认值
- * @return {*} 字符的整型值
+ * @param {any} defaultValue 如果字符不是数字,则使用的默认值
+ * @return {number} 字符的整型值
  * @example
  * toIntValue('3')  = 3
  * toIntValue('A')  = throws RangeError

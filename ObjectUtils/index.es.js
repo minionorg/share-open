@@ -9,15 +9,17 @@ function a(...e) {
       return !1;
   return !0;
 }
-const l = function(e) {
+function l(e) {
   return e.charAt(0).toUpperCase() + e.slice(1);
-}, o = function(e) {
+}
+function o(e) {
   if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
     return Object.prototype.toString.call(t) === `[object ${l(e)}]`;
   };
-}, f = o("Function");
+}
+const f = o("Function");
 class s {
   constructor(t, n = "nextSuccessor") {
     r(this, "fn");
@@ -39,16 +41,18 @@ class s {
     return this.nextNode && this.nextNode.start.apply(this.nextNode, arguments);
   }
 }
-const p = o("Object"), h = function(e) {
+const h = o("Object"), p = function(e) {
   return Object.getOwnPropertyNames(e).length === 0 ? !0 : "nextSuccessor";
 }, x = function(e) {
   return Object.keys(e).length === 0;
-}, y = function(e) {
-  if (!p(e))
+};
+function y(e) {
+  if (!h(e))
     throw new Error(`${e} is no a object type`);
-  const t = new s(h);
+  const t = new s(p);
   return t.after(x), t.start(e);
-}, N = {
+}
+const N = {
   allNotNull: a,
   isEmpty: y
 };

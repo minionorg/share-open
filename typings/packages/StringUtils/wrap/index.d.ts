@@ -1,7 +1,6 @@
 /**
  * 用字符包裹字符串
  *
- * @author (Set the text for this tag by adding docthis.authorName to your settings file.)
  * @param {string} str 要包装的字符串可以是null
  * @param {string} wrapWith 将包装的字符
  * @return {string} 包裹后的字符串

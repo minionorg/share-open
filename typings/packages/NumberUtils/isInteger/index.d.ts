@@ -2,7 +2,7 @@
  * 检查是否符合整数数字
  *
  * @param {string} str 将要检查的字符串
- * @param {boolean} options.zeroes 是否允许整数前面加0，默认允许
+ * @param {boolean} options.zeroes 是否允许整数前面加0,默认允许
  * @param {number} options.min 大于或等于最小值
  * @param {number} options.max 小于或等于最大值
  * @param {number} options.gt 大于最小值

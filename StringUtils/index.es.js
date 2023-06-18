@@ -1,15 +1,23 @@
 var $ = Object.defineProperty;
 var N = (n, e, t) => e in n ? $(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
 var E = (n, e, t) => (N(n, typeof e != "symbol" ? e + "" : e, t), t);
-const y = function(n) {
+function y(n) {
   return n.charAt(0).toUpperCase() + n.slice(1);
-}, T = function(n) {
+}
+function T(n) {
   if (!n)
     throw new SyntaxError("type is must");
   return function(e) {
     return Object.prototype.toString.call(e) === `[object ${y(n)}]`;
   };
-};
+}
+function m(n) {
+  if (!n)
+    throw new SyntaxError("type is must");
+  return function(e) {
+    return Object.prototype.toString.call(e) === `[object ${y(n)}]`;
+  };
+}
 function _(n, e, t = !1) {
   if (n !== null && e !== null) {
     const r = e.length;
@@ -30,13 +38,6 @@ function R(n, e, t, r, i, c) {
 }
 T("Function");
 T("Object");
-const m = function(n) {
-  if (!n)
-    throw new SyntaxError("type is must");
-  return function(e) {
-    return Object.prototype.toString.call(e) === `[object ${y(n)}]`;
-  };
-};
 class o {
   constructor() {
   }
@@ -120,9 +121,9 @@ function d(n, e, t, r) {
     }
   }
 }
-const F = function(n, e, t) {
+function F(n, e, t) {
   return t ? (t + n + t).indexOf(t + e + t) > -1 : n.indexOf(e) > -1;
-};
+}
 function q(n, ...e) {
   if (e.length !== 0) {
     for (const t of e)
@@ -152,7 +153,7 @@ function j(n, ...e) {
   }
   return !1;
 }
-const B = function(n) {
+function B(n) {
   return n.replace(/[&<>'"]/g, (e) => ({
     "&": "&amp;",
     "<": "&lt;",
@@ -160,23 +161,26 @@ const B = function(n) {
     "'": "&#39;",
     '"': "&quot;"
   })[e] || e);
-};
+}
 function a(n) {
   const e = o.isString(n);
   return e === null ? null : e.replace(/(^\s*)|(\s*$)/g, "");
 }
-const O = function(n) {
+function O(n) {
   return new RegExp("[A-Za-z]+", "g").test(n);
-}, v = function(n, e) {
+}
+const v = function(n, e) {
   let t = 0;
   for (let r = 0; r < n.length; r++)
     O(n[r]) ? t++ : t += e;
   return t;
-}, H = function(n, e = !1, t = 2) {
-  return e ? v(a(n), t) : n.length;
-}, U = function(n) {
-  return new RegExp("[\\u4E00-\\u9FFF]+", "g").test(n);
 };
+function H(n, e = !1, t = 2) {
+  return e ? v(a(n), t) : n.length;
+}
+function U(n) {
+  return new RegExp("[\\u4E00-\\u9FFF]+", "g").test(n);
+}
 function D(n) {
   const e = o.isString(n);
   return e === null ? null : e.replace(/(^\s*)/g, "");
@@ -393,7 +397,7 @@ function en(n, e, t) {
   } else
     return n.substring(e);
 }
-const tn = function(n) {
+function tn(n) {
   return n.replace(/&amp;|&lt;|&gt;|&#39;|&quot;/g, (e) => ({
     "&amp;": "&",
     "&lt;": "<",
@@ -401,7 +405,7 @@ const tn = function(n) {
     "&#39;": "'",
     "&quot;": '"'
   })[e] || e);
-};
+}
 function rn(n, e) {
   return u(n) || u(e) ? n : e.concat(n).concat(e);
 }

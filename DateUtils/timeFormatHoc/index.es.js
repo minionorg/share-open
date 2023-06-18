@@ -1,38 +1,39 @@
 var h = Object.defineProperty;
-var y = (e, t, n) => t in e ? h(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
-var c = (e, t, n) => (y(e, typeof t != "symbol" ? t + "" : t, n), n);
-const m = function(e) {
+var y = (e, t, i) => t in e ? h(e, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : e[t] = i;
+var c = (e, t, i) => (y(e, typeof t != "symbol" ? t + "" : t, i), i);
+function m(e) {
   return e.charAt(0).toUpperCase() + e.slice(1);
-}, f = function(e) {
+}
+function f(e) {
   if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
     return Object.prototype.toString.call(t) === `[object ${m(e)}]`;
   };
-};
+}
+function p(e) {
+  if (!e)
+    throw new SyntaxError("type is must");
+  return function(t) {
+    return Object.prototype.toString.call(t) === `[object ${m(e)}]`;
+  };
+}
 f("Function");
 f("Object");
-const p = function(e) {
-  if (!e)
-    throw new SyntaxError("type is must");
-  return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${m(e)}]`;
-  };
-};
 class l {
   constructor() {
   }
-  static notNull(t, n) {
+  static notNull(t, i) {
     if (t === null)
-      throw new SyntaxError(n || "The value must not be empty");
+      throw new SyntaxError(i || "The value must not be empty");
   }
-  static notEmpty(t, n) {
+  static notEmpty(t, i) {
     if (t.length === 0)
-      throw new SyntaxError(n || "The String must not be empty");
+      throw new SyntaxError(i || "The String must not be empty");
   }
   static errMsg(t) {
-    return function(n) {
-      return `${t}: ${n}`;
+    return function(i) {
+      return `${t}: ${i}`;
     };
   }
   static isString(t) {
@@ -62,15 +63,15 @@ const $ = {
     hasSecond: /^(0?\d|1[0-2]):([0-5]\d):([0-5]\d) (A|P)M$/
   }
 };
-function d(e, t, n) {
+function d(e, t, i) {
   let r;
   for (const o in t)
     if (["12", "24"].includes(o)) {
-      const i = d(e, t[o], o);
-      i && (r = i);
+      const n = d(e, t[o], o);
+      n && (r = n);
     } else if (t[o].test(e))
       return {
-        mode: n,
+        mode: i,
         format: o,
         matches: e.match(t[o])
       };
@@ -82,8 +83,8 @@ function w(e) {
   if (![24, 12].includes(e.mode))
     throw new SyntaxError(`${e.mode} is not valid mode`);
   return function(t) {
-    const n = d(t, $, void 0);
-    if (!n)
+    const i = d(t, $, void 0);
+    if (!i)
       throw new SyntaxError(`${t} is not valid time`);
     const r = {
       h: "",
@@ -91,16 +92,16 @@ function w(e) {
       s: "",
       b: ""
     };
-    if (n.mode === "12") {
-      const [i, s, u, a] = [...n.matches].splice(1, 4);
-      r.h = i, r.m = s, r.s = u, r.b = a, e.mode === 24 && a === "P" && (r.h = +i + 12 + "");
-    } else if (n.mode === "24") {
-      const [i, s, u] = [...n.matches].splice(1, 3);
-      r.h = i, r.m = s, r.s = u;
+    if (i.mode === "12") {
+      const [n, s, u, a] = [...i.matches].splice(1, 4);
+      r.h = n, r.m = s, r.s = u, r.b = a, e.mode === 24 && a === "P" && (r.h = +n + 12 + "");
+    } else if (i.mode === "24") {
+      const [n, s, u] = [...i.matches].splice(1, 3);
+      r.h = n, r.m = s, r.s = u;
     }
     if (e.mode === 12 && !r.b) {
-      const i = +r.h;
-      i > 12 ? (r.h = i - 12 + "", r.b = "P") : r.b = "A";
+      const n = +r.h;
+      n > 12 ? (r.h = n - 12 + "", r.b = "P") : r.b = "A";
     }
     let o = e.format.replace(/(h{1,2})/gi, r.h).replace(/(m{1,2})/gi, r.m).replace(r.s ? /(s{1,2})/gi : /:(s{1,2})/gi, r.s ? r.s : "");
     return e.mode === 12 && r.b && (o += ` ${r.b}M`), o;

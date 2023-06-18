@@ -13,6 +13,8 @@ declare const _default: {
         addAll: typeof import("./packages/ArrayUtils/addAll").default;
         clone: typeof import("./packages/ArrayUtils/clone").default;
         remove: typeof import("./packages/ArrayUtils/remove").default;
+        toAdded: typeof import("./packages/ArrayUtils/toAdded").default;
+        toRemoved: typeof import("./packages/ArrayUtils/toRemoved").default;
     };
     CharUtils: {
         compare: typeof import("./packages/CharUtils/compare").default;
@@ -31,15 +33,21 @@ declare const _default: {
         unicodeUnescaped: typeof import("./packages/CharUtils/unicodeUnescaped").default;
     };
     DateUtils: {
+        addDays: typeof import("./packages/DateUtils/addDays").default;
+        addHours: typeof import("./packages/DateUtils/addHours").default;
+        addMinutes: typeof import("./packages/DateUtils/addMinutes").default;
+        addSecs: typeof import("./packages/DateUtils/addSecs").default;
+        addTime: typeof import("./packages/DateUtils/addTime").default;
         dateFormatHoc: typeof import("./packages/DateUtils/dateFormatHoc").default;
-        getDatePeriod: (start: number, finish: number) => number;
-        getDaysInMonth: (date: Date) => number;
-        getFirstDateInMonth: (date: Date) => Date;
-        getLastDateInMonth: (date: Date) => Date;
+        getDatePeriod: typeof import("./packages/DateUtils/getDatePeriod").default;
+        getDaysInMonth: typeof import("./packages/DateUtils/getDaysInMonth").default;
+        getFirstDateInMonth: typeof import("./packages/DateUtils/getFirstDateInMonth").default;
+        getLastDateInMonth: typeof import("./packages/DateUtils/getLastDateInMonth").default;
         isDate: typeof import("./packages/DateUtils/isDate").default;
-        isLeapYear: (date: Date) => boolean;
+        isLeapYear: typeof import("./packages/DateUtils/isLeapYear").default;
         isTime: typeof import("./packages/DateUtils/isTime").default;
         timeFormatHoc: typeof import("./packages/DateUtils/timeFormatHoc").default;
+        toISOString: typeof import("./packages/DateUtils/toISOString").default;
     };
     DutyLink: typeof DutyLink;
     NumberUtils: {
@@ -48,21 +56,21 @@ declare const _default: {
     };
     ObjectUtils: {
         allNotNull: typeof import("./packages/ObjectUtils/allNotNull").default;
-        isEmpty: (obj: object) => any;
+        isEmpty: typeof import("./packages/ObjectUtils/isEmpty").default;
     };
     StringUtils: {
         abbreviate: typeof import("./packages/StringUtils/abbreviate").default;
-        contains: (target: string, str: string, separator?: string) => boolean;
+        contains: typeof import("./packages/StringUtils/contains").default;
         equals: typeof import("./packages/StringUtils/equals").default;
         equalsAny: typeof import("./packages/StringUtils/equalsAny").default;
         equalsAnyIgnoreCase: typeof import("./packages/StringUtils/equalsAnyIgnoreCase").default;
         equalsIgnoreCase: typeof import("./packages/StringUtils/equalsIgnoreCase").default;
-        escapeHTML: (str: string) => string;
-        getStrLength: (str: string, diff?: boolean, byte?: number) => number;
+        escapeHTML: typeof import("./packages/StringUtils/escapeHTML").default;
+        getStrLength: typeof import("./packages/StringUtils/getStrLength").default;
         isAnyEmpty: typeof import("./packages/StringUtils/isAnyEmpty").default;
         isEmpty: typeof import("./packages/StringUtils/isEmpty").default;
-        isEN: (str: string) => boolean;
-        isZH: (str: string) => boolean;
+        isEN: typeof import("./packages/StringUtils/isEN").default;
+        isZH: typeof import("./packages/StringUtils/isZH").default;
         length: typeof import("./packages/StringUtils/length").default;
         ltrim: typeof import("./packages/StringUtils/ltrim").default;
         rtrim: typeof import("./packages/StringUtils/rtrim").default;
@@ -84,26 +92,27 @@ declare const _default: {
         trimToEmpty: typeof import("./packages/StringUtils/trimToEmpty").default;
         trimToNull: typeof import("./packages/StringUtils/trimToNull").default;
         truncate: typeof import("./packages/StringUtils/truncate").default;
-        unescapeHTML: (str: string) => string;
-        upperCase: (str: string) => string;
+        unescapeHTML: typeof import("./packages/StringUtils/unescapeHTML").default;
+        upperCase: typeof import("./packages/StringUtils/upperCase").default;
         wrap: typeof import("./packages/StringUtils/wrap").default;
         wrapIfMissing: typeof import("./packages/StringUtils/wrapIfMissing").default;
     };
     Utils: {
-        createType: (type: string) => (value: any) => boolean;
-        getURLValueByKey: (URL: string, key: string) => string;
-        hasEmoji: (str: string) => boolean;
-        isEmail: (str: string) => boolean;
+        createType: typeof import("./packages/Utils/createType").default;
+        getURLValueByKey: typeof import("./packages/Utils/getURLValueByKey").default;
+        getValue: typeof import("./packages/Utils/getValue").default;
+        hasEmoji: typeof import("./packages/Utils/hasEmoji").default;
+        isEmail: typeof import("./packages/Utils/isEmail").default;
         isIPv4: typeof import("./packages/Utils/isIPv4").default;
         isIPv4Range: typeof import("./packages/Utils/isIPv4Range").default;
         isIPv6: typeof import("./packages/Utils/isIPv6").default;
         isIPv6Range: typeof import("./packages/Utils/isIPv6Range").default;
-        isMobile: (value: string | number) => boolean;
-        isPhone: (value: string | number) => boolean;
+        isMobile: typeof import("./packages/Utils/isMobile").default;
+        isPhone: typeof import("./packages/Utils/isPhone").default;
         isPort: typeof import("./packages/Utils/isPort").default;
-        isPostalCode: (value: string | number) => boolean;
-        queryURLParams: (url: string) => any;
-        validateTypeHoc: (type: string) => (value: any) => boolean;
+        isPostalCode: typeof import("./packages/Utils/isPostalCode").default;
+        queryURLParams: typeof import("./packages/Utils/queryURLParams").default;
+        validateTypeHoc: typeof import("./packages/Utils/validateTypeHoc").default;
     };
 };
 export default _default;

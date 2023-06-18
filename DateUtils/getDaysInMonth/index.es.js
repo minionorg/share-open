@@ -1,6 +1,7 @@
-const t = function(e) {
+function t(e) {
   return new Date(e.getFullYear(), 2, 0).getDate() === 29;
-}, a = function(e) {
+}
+function n(e) {
   switch (e.getMonth()) {
     case 0:
     case 2:
@@ -15,7 +16,7 @@ const t = function(e) {
     default:
       return 30;
   }
-};
+}
 export {
-  a as default
+  n as default
 };

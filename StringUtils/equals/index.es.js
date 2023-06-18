@@ -1,38 +1,39 @@
 var c = Object.defineProperty;
-var a = (r, t, n) => t in r ? c(r, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : r[t] = n;
-var u = (r, t, n) => (a(r, typeof t != "symbol" ? t + "" : t, n), n);
-const i = function(r) {
+var a = (r, t, e) => t in r ? c(r, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : r[t] = e;
+var u = (r, t, e) => (a(r, typeof t != "symbol" ? t + "" : t, e), e);
+function i(r) {
   return r.charAt(0).toUpperCase() + r.slice(1);
-}, o = function(r) {
+}
+function o(r) {
   if (!r)
     throw new SyntaxError("type is must");
   return function(t) {
     return Object.prototype.toString.call(t) === `[object ${i(r)}]`;
   };
-};
+}
+function f(r) {
+  if (!r)
+    throw new SyntaxError("type is must");
+  return function(t) {
+    return Object.prototype.toString.call(t) === `[object ${i(r)}]`;
+  };
+}
 o("Function");
 o("Object");
-const f = function(r) {
-  if (!r)
-    throw new SyntaxError("type is must");
-  return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${i(r)}]`;
-  };
-};
-class e {
+class n {
   constructor() {
   }
-  static notNull(t, n) {
+  static notNull(t, e) {
     if (t === null)
-      throw new SyntaxError(n || "The value must not be empty");
+      throw new SyntaxError(e || "The value must not be empty");
   }
-  static notEmpty(t, n) {
+  static notEmpty(t, e) {
     if (t.length === 0)
-      throw new SyntaxError(n || "The String must not be empty");
+      throw new SyntaxError(e || "The String must not be empty");
   }
   static errMsg(t) {
-    return function(n) {
-      return `${t}: ${n}`;
+    return function(e) {
+      return `${t}: ${e}`;
     };
   }
   static isString(t) {
@@ -51,10 +52,10 @@ class e {
     return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(t);
   }
 }
-u(e, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
+u(n, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
 function y(r, t) {
-  const n = e.isString(r), s = e.isString(t);
-  return n === s;
+  const e = n.isString(r), s = n.isString(t);
+  return e === s;
 }
 export {
   y as default

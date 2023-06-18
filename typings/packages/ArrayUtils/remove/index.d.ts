@@ -3,7 +3,7 @@
  *
  * @param {array} array 将要删除的数组
  * @param {number} index 删除的位置
- * @return {array} 返回新的数组
+ * @return {array} 返回改变后的原数组
  * @example
  * remove([1], 0) = []
  * remove([1, 2], 0) = [2]

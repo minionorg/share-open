@@ -1,15 +1,17 @@
 var o = Object.defineProperty;
-var c = (e, t, n) => t in e ? o(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
-var r = (e, t, n) => (c(e, typeof t != "symbol" ? t + "" : t, n), n);
-const a = function(e) {
+var a = (e, t, n) => t in e ? o(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
+var r = (e, t, n) => (a(e, typeof t != "symbol" ? t + "" : t, n), n);
+function c(e) {
   return e.charAt(0).toUpperCase() + e.slice(1);
-}, u = function(e) {
+}
+function u(e) {
   if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${a(e)}]`;
+    return Object.prototype.toString.call(t) === `[object ${c(e)}]`;
   };
-}, h = u("Function");
+}
+const h = u("Function");
 class s {
   constructor(t, n = "nextSuccessor") {
     r(this, "fn");

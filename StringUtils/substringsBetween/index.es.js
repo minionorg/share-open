@@ -1,24 +1,25 @@
 var m = Object.defineProperty;
 var E = (n, t, e) => t in n ? m(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
 var a = (n, t, e) => (E(n, typeof t != "symbol" ? t + "" : t, e), e);
-const y = function(n) {
+function y(n) {
   return n.charAt(0).toUpperCase() + n.slice(1);
-}, p = function(n) {
+}
+function p(n) {
   if (!n)
     throw new SyntaxError("type is must");
   return function(t) {
     return Object.prototype.toString.call(t) === `[object ${y(n)}]`;
   };
-};
+}
+function b(n) {
+  if (!n)
+    throw new SyntaxError("type is must");
+  return function(t) {
+    return Object.prototype.toString.call(t) === `[object ${y(n)}]`;
+  };
+}
 p("Function");
 p("Object");
-const b = function(n) {
-  if (!n)
-    throw new SyntaxError("type is must");
-  return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${y(n)}]`;
-  };
-};
 class g {
   constructor() {
   }

@@ -1,26 +1,26 @@
-const n = function(r) {
-  return r.charAt(0).toUpperCase() + r.slice(1);
-}, o = function(r) {
-  if (!r)
+function o(e) {
+  return e.charAt(0).toUpperCase() + e.slice(1);
+}
+function r(e) {
+  if (!e)
     throw new SyntaxError("type is must");
-  return function(e) {
-    return Object.prototype.toString.call(e) === `[object ${n(r)}]`;
+  return function(t) {
+    return Object.prototype.toString.call(t) === `[object ${o(e)}]`;
   };
-};
-function s(r, e) {
-  if (!o("Array")(r))
+}
+function n(e, t) {
+  if (!r("Array")(e))
     throw new TypeError("The list must be array");
-  const t = [...r];
-  if (t.length === 0)
-    return t;
-  if (e === void 0)
+  if (e.length === 0)
+    return e;
+  if (t === void 0)
     throw new SyntaxError("The index must be required");
-  if (o("Number")(e))
-    e < 0 ? e = 0 : e >= t.length ? e = t.length - 1 : e = Math.floor(e);
+  if (r("Number")(t))
+    t < 0 ? t = 0 : t >= e.length ? t = e.length - 1 : t = Math.floor(t);
   else
     throw new TypeError("The index must be number");
-  return t.splice(e, 1), t;
+  return e.splice(t, 1), e;
 }
 export {
-  s as default
+  n as default
 };

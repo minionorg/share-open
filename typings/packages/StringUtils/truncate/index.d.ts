@@ -1,9 +1,9 @@
 /**
  * 截断字符串
  *
- * @param {string} str 要截断的字符串，可能为null
+ * @param {string} str 要截断的字符串,可能为null
  * @param {number} offset 位置
- * @param {number} maxWidth 结果的最大长度字符串，必须为正整数
+ * @param {number} maxWidth 结果的最大长度字符串,必须为正整数
  * @return {string}  截断字符串
  * @example
  * truncate(null, 0, 0) = null

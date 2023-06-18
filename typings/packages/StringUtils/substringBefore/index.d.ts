@@ -1,5 +1,5 @@
 /**
- * 获取第一次出现分隔符之前的子字符串。不返回分隔符
+ * 获取第一次出现分隔符之前的子字符串,不返回分隔符
  *
  * @param {string} str 从中获取子字符串的字符串可能为null
  * @param {(string | number)} separator 要搜索的字符串可能为null

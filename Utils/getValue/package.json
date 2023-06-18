@@ -1,0 +1,7 @@
+{
+  "name": "getvalue",
+  "version": "1.0.0",
+  "main": "./index.umd.js",
+  "module": "./index.es.js",
+  "typings": "../../typings/packages/Utils/getValue/index.d.ts"
+}

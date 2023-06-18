@@ -1,30 +1,31 @@
 var m = Object.defineProperty;
 var g = (e, t, n) => t in e ? m(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
 var u = (e, t, n) => (g(e, typeof t != "symbol" ? t + "" : t, n), n);
-const l = function(e) {
+function l(e) {
   return e.charAt(0).toUpperCase() + e.slice(1);
-}, p = function(e) {
+}
+function p(e) {
   if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
     return Object.prototype.toString.call(t) === `[object ${l(e)}]`;
   };
-};
-function h(e, t) {
+}
+function h(e) {
+  if (!e)
+    throw new SyntaxError("type is must");
+  return function(t) {
+    return Object.prototype.toString.call(t) === `[object ${l(e)}]`;
+  };
+}
+function w(e, t) {
   if (a.isString(e) === null)
     return !1;
-  const c = /^(?:[-+]?(?:0|[1-9][0-9]*))$/, o = /^[-+]?[0-9]+$/, r = t || {}, s = Object.prototype.hasOwnProperty, y = (Object.prototype.hasOwnProperty.call(r, "zeroes") && !r.zeroes ? c : o).test(e), i = parseInt(e, 10);
-  return y && (!s.call(r, "min") || i >= r.min) && (!s.call(r, "max") || i <= r.max) && (!s.call(r, "lt") || i < r.lt) && (!s.call(r, "gt") || i > r.gt);
+  const c = /^(?:[-+]?(?:0|[1-9][0-9]*))$/, o = /^[-+]?[0-9]+$/, r = t || {}, i = Object.prototype.hasOwnProperty, y = (Object.prototype.hasOwnProperty.call(r, "zeroes") && !r.zeroes ? c : o).test(e), s = parseInt(e, 10);
+  return y && (!i.call(r, "min") || s >= r.min) && (!i.call(r, "max") || s <= r.max) && (!i.call(r, "lt") || s < r.lt) && (!i.call(r, "gt") || s > r.gt);
 }
 p("Function");
 p("Object");
-const w = function(e) {
-  if (!e)
-    throw new SyntaxError("type is must");
-  return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${l(e)}]`;
-  };
-};
 class a {
   constructor() {
   }
@@ -44,7 +45,7 @@ class a {
   static isString(t) {
     if (t === null)
       return null;
-    if (w("string")(t))
+    if (h("string")(t))
       return t;
     throw new TypeError("The parameter type is string");
   }
@@ -62,15 +63,15 @@ function x(e, t) {
   const n = a.isString(e);
   if ([null, "", ".", ",", "-", "+"].includes(n))
     return !1;
-  const c = new RegExp("^(?:[-+])?(?:[0-9]+)?(?:\\.[0-9]*)?(?:[eE][\\+\\-]?(?:[0-9]+))?$"), o = t || {}, r = Object.prototype.hasOwnProperty, s = parseFloat(n.replace(",", "."));
-  return c.test(e) && (!r.call(o, "min") || s >= o.min) && (!r.call(o, "max") || s <= o.max) && (!r.call(o, "lt") || s < o.lt) && (!r.call(o, "gt") || s > o.gt);
+  const c = new RegExp("^(?:[-+])?(?:[0-9]+)?(?:\\.[0-9]*)?(?:[eE][\\+\\-]?(?:[0-9]+))?$"), o = t || {}, r = Object.prototype.hasOwnProperty, i = parseFloat(n.replace(",", "."));
+  return c.test(e) && (!r.call(o, "min") || i >= o.min) && (!r.call(o, "max") || i <= o.max) && (!r.call(o, "lt") || i < o.lt) && (!r.call(o, "gt") || i > o.gt);
 }
 const O = {
   isFloat: x,
-  isInteger: h
+  isInteger: w
 };
 export {
   O as default,
   x as isFloat,
-  h as isInteger
+  w as isInteger
 };

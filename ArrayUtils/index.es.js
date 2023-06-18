@@ -1,31 +1,31 @@
-const s = function(r) {
-  return r.charAt(0).toUpperCase() + r.slice(1);
-}, o = function(r) {
-  if (!r)
+function s(e) {
+  return e.charAt(0).toUpperCase() + e.slice(1);
+}
+function o(e) {
+  if (!e)
     throw new SyntaxError("type is must");
-  return function(e) {
-    return Object.prototype.toString.call(e) === `[object ${s(r)}]`;
+  return function(r) {
+    return Object.prototype.toString.call(r) === `[object ${s(e)}]`;
   };
-};
-function l(r, e, t) {
-  if (!o("Array")(r))
+}
+function i(e, r, t) {
+  if (!o("Array")(e))
     throw new TypeError("The list must be array");
-  const n = [...r];
   if (t === void 0)
-    n.push(e);
+    e.push(r);
   else if (o("Number")(t))
-    n.splice(t, 0, e);
+    e.splice(t, 0, r);
   else
     throw new TypeError("The index must be number");
-  return n;
+  return e;
 }
-function c(r, ...e) {
+function f(e, ...r) {
   const t = o("Array");
-  if (t(r)) {
-    if (e.length === 0)
-      return [...r];
-    let n = [...r];
-    for (const u of e) {
+  if (t(e)) {
+    if (r.length === 0)
+      return [...e];
+    let n = [...e];
+    for (const u of r) {
       if (!t(u))
         throw new SyntaxError(`The ${u} must be array in rest`);
       n = [...n, ...u];
@@ -34,46 +34,75 @@ function c(r, ...e) {
   } else
     throw new SyntaxError("The ary must be array");
 }
-const i = function(r) {
-  if (!r)
+function l(e) {
+  if (!e)
     throw new SyntaxError("type is must");
-  return function(e) {
-    return Object.prototype.toString.call(e) === `[object ${s(r)}]`;
+  return function(r) {
+    return Object.prototype.toString.call(r) === `[object ${s(e)}]`;
   };
-};
-i("Function");
-i("Object");
-function f(r) {
-  if (r === null)
-    return null;
-  if (!o("Array")(r))
-    throw new TypeError("The ary must be array");
-  return [...r];
 }
-function a(r, e) {
-  if (!o("Array")(r))
+l("Function");
+l("Object");
+function h(e) {
+  if (e === null)
+    return null;
+  if (!o("Array")(e))
+    throw new TypeError("The ary must be array");
+  return [...e];
+}
+function c(e, r) {
+  if (!o("Array")(e))
     throw new TypeError("The list must be array");
-  const t = [...r];
-  if (t.length === 0)
-    return t;
-  if (e === void 0)
+  if (e.length === 0)
+    return e;
+  if (r === void 0)
     throw new SyntaxError("The index must be required");
-  if (o("Number")(e))
-    e < 0 ? e = 0 : e >= t.length ? e = t.length - 1 : e = Math.floor(e);
+  if (o("Number")(r))
+    r < 0 ? r = 0 : r >= e.length ? r = e.length - 1 : r = Math.floor(r);
   else
     throw new TypeError("The index must be number");
-  return t.splice(e, 1), t;
+  return e.splice(r, 1), e;
 }
-const h = {
-  add: l,
-  addAll: c,
-  clone: f,
-  remove: a
+function w(e, r, t) {
+  if (!o("Array")(e))
+    throw new TypeError("The list must be array");
+  const n = [...e];
+  if (t === void 0)
+    n.push(r);
+  else if (o("Number")(t))
+    n.splice(t, 0, r);
+  else
+    throw new TypeError("The index must be number");
+  return n;
+}
+function b(e, r) {
+  if (!o("Array")(e))
+    throw new TypeError("The list must be array");
+  const t = [...e];
+  if (t.length === 0)
+    return t;
+  if (r === void 0)
+    throw new SyntaxError("The index must be required");
+  if (o("Number")(r))
+    r < 0 ? r = 0 : r >= t.length ? r = t.length - 1 : r = Math.floor(r);
+  else
+    throw new TypeError("The index must be number");
+  return t.splice(r, 1), t;
+}
+const p = {
+  add: i,
+  addAll: f,
+  clone: h,
+  remove: c,
+  toAdded: w,
+  toRemoved: b
 };
 export {
-  l as add,
-  c as addAll,
-  f as clone,
-  h as default,
-  a as remove
+  i as add,
+  f as addAll,
+  h as clone,
+  p as default,
+  c as remove,
+  w as toAdded,
+  b as toRemoved
 };

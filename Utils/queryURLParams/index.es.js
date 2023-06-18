@@ -1,69 +1,72 @@
 var l = Object.defineProperty;
-var p = (n, t, e) => t in n ? l(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
-var o = (n, t, e) => (p(n, typeof t != "symbol" ? t + "" : t, e), e);
-const h = function(n) {
-  return n.charAt(0).toUpperCase() + n.slice(1);
-}, f = function(n) {
-  if (!n)
+var p = (e, t, r) => t in e ? l(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
+var o = (e, t, r) => (p(e, typeof t != "symbol" ? t + "" : t, r), r);
+function h(e) {
+  return e.charAt(0).toUpperCase() + e.slice(1);
+}
+function f(e) {
+  if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${h(n)}]`;
+    return Object.prototype.toString.call(t) === `[object ${h(e)}]`;
   };
-}, x = f("Function");
+}
+const x = f("Function");
 class c {
-  constructor(t, e = "nextSuccessor") {
+  constructor(t, r = "nextSuccessor") {
     o(this, "fn");
     o(this, "nextNode");
     o(this, "nextFlag");
     if (!x(t))
       throw new Error(`${t} is no a function`);
-    this.fn = t, this.nextNode = null, this.nextFlag = e;
+    this.fn = t, this.nextNode = null, this.nextFlag = r;
   }
-  after(t, e = this.nextFlag) {
-    const r = t instanceof c;
-    return this.nextNode = r ? t : new c(t, e);
+  after(t, r = this.nextFlag) {
+    const n = t instanceof c;
+    return this.nextNode = n ? t : new c(t, r);
   }
   start(...t) {
-    const e = this.fn.apply(this, t);
-    return e === this.nextFlag ? this.next.apply(this, t) : e;
+    const r = this.fn.apply(this, t);
+    return r === this.nextFlag ? this.next.apply(this, t) : r;
   }
   next() {
     return this.nextNode && this.nextNode.start.apply(this.nextNode, arguments);
   }
 }
-const y = f("Object"), m = function(n) {
-  return Object.getOwnPropertyNames(n).length === 0 ? !0 : "nextSuccessor";
-}, g = function(n) {
-  return Object.keys(n).length === 0;
-}, u = function(n) {
-  if (!y(n))
-    throw new Error(`${n} is no a object type`);
-  const t = new c(m);
-  return t.after(g), t.start(n);
+const y = f("Object"), m = function(e) {
+  return Object.getOwnPropertyNames(e).length === 0 ? !0 : "nextSuccessor";
+}, g = function(e) {
+  return Object.keys(e).length === 0;
 };
-function w(n) {
-  const t = /([^?=&]+)=([^&]*)/gi, e = {};
-  return n.replace(t, (r, s, a) => {
-    e[s] = a;
-  }), u(e) ? "nextSuccessor" : e;
+function u(e) {
+  if (!y(e))
+    throw new Error(`${e} is no a object type`);
+  const t = new c(m);
+  return t.after(g), t.start(e);
 }
-function S(n) {
-  const t = n.split("?")[1], e = {}, r = t && t.split("&");
-  return r && r.reduce((s, a) => {
+function w(e) {
+  const t = /([^?=&]+)=([^&]*)/gi, r = {};
+  return e.replace(t, (n, s, a) => {
+    r[s] = a;
+  }), u(r) ? "nextSuccessor" : r;
+}
+function S(e) {
+  const t = e.split("?")[1], r = {}, n = t && t.split("&");
+  return n && n.reduce((s, a) => {
     const i = a.split("=");
     return s[i[0]] = i[1], s;
-  }, e), u(e) ? "nextSuccessor" : e;
+  }, r), u(r) ? "nextSuccessor" : r;
 }
-function N(n) {
-  const t = n.split("?")[1], e = new URLSearchParams(t), r = {};
-  for (const s of e)
-    r[s[0]] = s[1];
-  return u(r) ? null : r;
+function N(e) {
+  const t = e.split("?")[1], r = new URLSearchParams(t), n = {};
+  for (const s of r)
+    n[s[0]] = s[1];
+  return u(n) ? null : n;
 }
-const O = function(n) {
+function O(e) {
   const t = new c(w);
-  return t.after(S).after(N), t.start(n);
-};
+  return t.after(S).after(N), t.start(e);
+}
 export {
   O as default
 };

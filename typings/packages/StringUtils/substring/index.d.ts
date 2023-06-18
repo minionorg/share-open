@@ -1,10 +1,10 @@
 /**
- * 从指定的字符串中获取一个子串，避免出现异常
+ * 从指定的字符串中获取一个子串,避免出现异常
  *
- * @param {string} str 从字符串中获取子字符串，可能为null
- * @param {number} start 开始位置，默认为0，负数表示从字符串末尾开始倒数加上字符串长度
- * @param {number} end 结束位置，默认为0，负数表示从字符串末尾开始倒数加上字符串长度
- * @return {string} 根据开始和结束位置获取字符串，可能返回null
+ * @param {string} str 从字符串中获取子字符串,可能为null
+ * @param {number} start 开始位置,默认为0,负数表示从字符串末尾开始倒数加上字符串长度
+ * @param {number} end 结束位置,默认为0,负数表示从字符串末尾开始倒数加上字符串长度
+ * @return {string} 根据开始和结束位置获取字符串,可能返回null
  * @example
  * substring(null) = null
  * substring('') = ''

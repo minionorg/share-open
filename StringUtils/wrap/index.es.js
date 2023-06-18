@@ -1,38 +1,39 @@
-var s = Object.defineProperty;
-var a = (n, t, r) => t in n ? s(n, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : n[t] = r;
-var e = (n, t, r) => (a(n, typeof t != "symbol" ? t + "" : t, r), r);
-const o = function(n) {
-  return n.charAt(0).toUpperCase() + n.slice(1);
-}, i = function(n) {
-  if (!n)
+var a = Object.defineProperty;
+var s = (r, t, n) => t in r ? a(r, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : r[t] = n;
+var e = (r, t, n) => (s(r, typeof t != "symbol" ? t + "" : t, n), n);
+function i(r) {
+  return r.charAt(0).toUpperCase() + r.slice(1);
+}
+function o(r) {
+  if (!r)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${o(n)}]`;
+    return Object.prototype.toString.call(t) === `[object ${i(r)}]`;
   };
-};
-i("Function");
-i("Object");
-const f = function(n) {
-  if (!n)
+}
+function f(r) {
+  if (!r)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${o(n)}]`;
+    return Object.prototype.toString.call(t) === `[object ${i(r)}]`;
   };
-};
+}
+o("Function");
+o("Object");
 class c {
   constructor() {
   }
-  static notNull(t, r) {
+  static notNull(t, n) {
     if (t === null)
-      throw new SyntaxError(r || "The value must not be empty");
+      throw new SyntaxError(n || "The value must not be empty");
   }
-  static notEmpty(t, r) {
+  static notEmpty(t, n) {
     if (t.length === 0)
-      throw new SyntaxError(r || "The String must not be empty");
+      throw new SyntaxError(n || "The String must not be empty");
   }
   static errMsg(t) {
-    return function(r) {
-      return `${t}: ${r}`;
+    return function(n) {
+      return `${t}: ${n}`;
     };
   }
   static isString(t) {
@@ -52,12 +53,12 @@ class c {
   }
 }
 e(c, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
-function u(n) {
-  const t = c.isString(n);
+function u(r) {
+  const t = c.isString(r);
   return t === null || t.length === 0;
 }
-function y(n, t) {
-  return u(n) || u(t) ? n : t.concat(n).concat(t);
+function y(r, t) {
+  return u(r) || u(t) ? r : t.concat(r).concat(t);
 }
 export {
   y as default

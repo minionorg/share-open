@@ -1,3 +1,9 @@
+export type DateType = string | Date;
+export interface IDateOptions {
+    format?: 'YYYY/MM/DD';
+    delimiters?: ['/', '-'];
+    strictMode?: false;
+}
 /**
  * 校验日期格式是否符合
  *
@@ -21,9 +27,5 @@
  * isDate('2019-04-31') = false
  * isDate('2020/03-15') = false
  */
-declare function isDate(str: string | Date, options?: {
-    format: string;
-    delimiters: string[];
-    strictMode: boolean;
-}): boolean;
+declare function isDate(str: DateType, options?: Partial<IDateOptions>): boolean;
 export default isDate;

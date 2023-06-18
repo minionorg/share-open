@@ -3,6 +3,6 @@ import isEmpty from './isEmpty';
 export { allNotNull, isEmpty, };
 declare const _default: {
     allNotNull: typeof allNotNull;
-    isEmpty: (obj: object) => any;
+    isEmpty: typeof isEmpty;
 };
 export default _default;
