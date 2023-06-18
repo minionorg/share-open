@@ -11,6 +11,10 @@
     "工具库",
     "按需加载"
   ],
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/minionorg/share-open.git"
+	},
   "author": "Evan",
   "license": "ISC",
   "devDependencies": {
