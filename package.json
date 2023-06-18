@@ -1,6 +1,6 @@
 {
   "name": "@minionorg/share",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "函数库,工具库",
   "main": "./index.umd.js",
   "module": "./index.es.js",
@@ -12,16 +12,16 @@
     "按需加载"
   ],
   "repository": {
-		"type": "git",
-		"url": "https://github.com/minionorg/share-open.git"
-	},
+    "type": "git",
+    "url": "https://github.com/minionorg/share-open.git"
+  },
   "author": "Evan",
   "license": "ISC",
   "scripts": {
-		"release": "release-it"
-	},
+    "release": "release-it"
+  },
   "devDependencies": {
-		"@release-it/bumper": "^3.0.1",
-		"release-it": "^14.12.4"
-	}
+    "@release-it/bumper": "^3.0.1",
+    "release-it": "^14.12.4"
+  }
 }
