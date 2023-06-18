@@ -12,5 +12,9 @@
     "按需加载"
   ],
   "author": "Evan",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+		"@release-it/bumper": "^3.0.1",
+		"release-it": "^14.12.4"
+	}
 }
