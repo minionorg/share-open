@@ -36,8 +36,10 @@ declare const _default: {
         addDays: typeof import("./packages/DateUtils/addDays").default;
         addHours: typeof import("./packages/DateUtils/addHours").default;
         addMinutes: typeof import("./packages/DateUtils/addMinutes").default;
+        addMonths: typeof import("./packages/DateUtils/addMonths").default;
         addSecs: typeof import("./packages/DateUtils/addSecs").default;
         addTime: typeof import("./packages/DateUtils/addTime").default;
+        addYears: typeof import("./packages/DateUtils/addYears").default;
         dateFormatHoc: typeof import("./packages/DateUtils/dateFormatHoc").default;
         getDatePeriod: typeof import("./packages/DateUtils/getDatePeriod").default;
         getDaysInMonth: typeof import("./packages/DateUtils/getDaysInMonth").default;

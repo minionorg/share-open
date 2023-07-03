@@ -1,45 +1,45 @@
-var y = Object.defineProperty;
-var w = (e, t, n) => t in e ? y(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
-var l = (e, t, n) => (w(e, typeof t != "symbol" ? t + "" : t, n), n);
-function f(e) {
+var d = Object.defineProperty;
+var g = (e, t, r) => t in e ? d(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
+var f = (e, t, r) => (g(e, typeof t != "symbol" ? t + "" : t, r), r);
+function y(e) {
   return e.charAt(0).toUpperCase() + e.slice(1);
 }
-function p(e) {
+function h(e) {
   if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${f(e)}]`;
+    return Object.prototype.toString.call(t) === `[object ${y(e)}]`;
   };
 }
-function u(e) {
+function o(e) {
   if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
-    return Object.prototype.toString.call(t) === `[object ${f(e)}]`;
+    return Object.prototype.toString.call(t) === `[object ${y(e)}]`;
   };
 }
-p("Function");
-p("Object");
-class m {
+h("Function");
+h("Object");
+class p {
   constructor() {
   }
-  static notNull(t, n) {
+  static notNull(t, r) {
     if (t === null)
-      throw new SyntaxError(n || "The value must not be empty");
+      throw new SyntaxError(r || "The value must not be empty");
   }
-  static notEmpty(t, n) {
+  static notEmpty(t, r) {
     if (t.length === 0)
-      throw new SyntaxError(n || "The String must not be empty");
+      throw new SyntaxError(r || "The String must not be empty");
   }
   static errMsg(t) {
-    return function(n) {
-      return `${t}: ${n}`;
+    return function(r) {
+      return `${t}: ${r}`;
     };
   }
   static isString(t) {
     if (t === null)
       return null;
-    if (u("string")(t))
+    if (o("string")(t))
       return t;
     throw new TypeError("The parameter type is string");
   }
@@ -52,21 +52,80 @@ class m {
     return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(t);
   }
 }
-l(m, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
-function s(e, t) {
-  if (m.isString(e) === null)
+f(p, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
+function a(e, t) {
+  if (p.isString(e) === null)
     return !1;
-  const o = /^(?:[-+]?(?:0|[1-9][0-9]*))$/, i = /^[-+]?[0-9]+$/, r = t || {}, a = Object.prototype.hasOwnProperty, g = (Object.prototype.hasOwnProperty.call(r, "zeroes") && !r.zeroes ? o : i).test(e), c = parseInt(e, 10);
-  return g && (!a.call(r, "min") || c >= r.min) && (!a.call(r, "max") || c <= r.max) && (!a.call(r, "lt") || c < r.lt) && (!a.call(r, "gt") || c > r.gt);
+  const c = /^(?:[-+]?(?:0|[1-9][0-9]*))$/, u = /^[-+]?[0-9]+$/, i = t || {}, s = Object.prototype.hasOwnProperty, l = (Object.prototype.hasOwnProperty.call(i, "zeroes") && !i.zeroes ? c : u).test(e), n = parseInt(e, 10);
+  return l && (!s.call(i, "min") || n >= i.min) && (!s.call(i, "max") || n <= i.max) && (!s.call(i, "lt") || n < i.lt) && (!s.call(i, "gt") || n > i.gt);
 }
-function b(e, t = 0, n = 0, o = 0, i = 0) {
-  if (!u("Date")(e))
+function D(e, t) {
+  if (!o("Date")(e))
     throw new TypeError(`Invalid date: ${e}`);
-  if (!s(t + "") || !s(n + "") || !s(o + "") || !s(i + ""))
-    throw new SyntaxError("Invalid time values");
+  if (!a(t + ""))
+    throw new SyntaxError(`Invalid number: ${t}`);
   const r = new Date(e.getTime());
-  return r.setDate(r.getDate() + (u("Number")(t) ? t : +t)), r.setHours(r.getHours() + (u("Number")(n) ? n : +n)), r.setMinutes(r.getMinutes() + (u("Number")(o) ? o : +o)), r.setSeconds(r.getSeconds() + (u("Number")(i) ? i : +i)), r;
+  return r.setFullYear(r.getFullYear() + (o("Number")(t) ? t : +t)), r;
+}
+function E(e, t) {
+  if (!o("Date")(e))
+    throw new TypeError(`Invalid date: ${e}`);
+  if (!a(t + ""))
+    throw new SyntaxError(`Invalid number: ${t}`);
+  const r = new Date(e.getTime());
+  return r.setMonth(r.getMonth() + (o("Number")(t) ? t : +t)), r;
+}
+function T(e, t) {
+  if (!o("Date")(e))
+    throw new TypeError(`Invalid date: ${e}`);
+  if (!a(t + ""))
+    throw new SyntaxError(`Invalid number: ${t}`);
+  const r = new Date(e.getTime());
+  return r.setDate(r.getDate() + (o("Number")(t) ? t : +t)), r;
+}
+function $(e, t) {
+  if (!o("Date")(e))
+    throw new TypeError(`Invalid date: ${e}`);
+  if (!a(t + ""))
+    throw new SyntaxError(`Invalid number: ${t}`);
+  const r = new Date(e.getTime());
+  return r.setHours(r.getHours() + (o("Number")(t) ? t : +t)), r;
+}
+function m(e, t) {
+  if (!o("Date")(e))
+    throw new TypeError(`Invalid date: ${e}`);
+  if (!a(t + ""))
+    throw new SyntaxError(`Invalid number: ${t}`);
+  const r = new Date(e.getTime());
+  return r.setMinutes(r.getMinutes() + (o("Number")(t) ? t : +t)), r;
+}
+function S(e, t) {
+  if (!o("Date")(e))
+    throw new TypeError(`Invalid date: ${e}`);
+  if (!a(t + ""))
+    throw new SyntaxError(`Invalid number: ${t}`);
+  const r = new Date(e.getTime());
+  return r.setSeconds(r.getSeconds() + (o("Number")(t) ? t : +t)), r;
+}
+function x(e, t) {
+  if (!o("Date")(e))
+    throw new TypeError(`Invalid date: ${e}`);
+  const r = {
+    years: 0,
+    months: 0,
+    days: 0,
+    hours: 0,
+    mins: 0,
+    secs: 0
+  }, { years: c, months: u, days: i, hours: s, mins: w, secs: l } = {
+    ...r,
+    ...t
+  };
+  if (!a(c + "") || !a(u + "") || !a(i + "") || !a(s + "") || !a(w + "") || !a(l + ""))
+    throw new SyntaxError("Invalid time values");
+  let n = new Date(e.getTime());
+  return n = D(n, c), n = E(n, u), n = T(n, i), n = $(n, s), n = m(n, w), n = S(n, l), n;
 }
 export {
-  b as default
+  x as default
 };

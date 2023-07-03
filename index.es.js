@@ -1,6 +1,6 @@
-var K = Object.defineProperty;
-var X = (e, t, n) => t in e ? K(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
-var p = (e, t, n) => (X(e, typeof t != "symbol" ? t + "" : t, n), n);
+var te = Object.defineProperty;
+var ne = (e, t, n) => t in e ? te(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
+var p = (e, t, n) => (ne(e, typeof t != "symbol" ? t + "" : t, n), n);
 function x(e) {
   return e.charAt(0).toUpperCase() + e.slice(1);
 }
@@ -11,7 +11,7 @@ function l(e) {
     return Object.prototype.toString.call(t) === `[object ${x(e)}]`;
   };
 }
-function J(e, t, n) {
+function re(e, t, n) {
   if (!l("Array")(e))
     throw new TypeError("The list must be array");
   if (n === void 0)
@@ -22,7 +22,7 @@ function J(e, t, n) {
     throw new TypeError("The index must be number");
   return e;
 }
-function Q(e, ...t) {
+function ie(e, ...t) {
   const n = l("Array");
   if (n(e)) {
     if (t.length === 0)
@@ -37,18 +37,18 @@ function Q(e, ...t) {
   } else
     throw new SyntaxError("The ary must be array");
 }
-function C(e) {
+function F(e) {
   if (!e)
     throw new SyntaxError("type is must");
   return function(t) {
     return Object.prototype.toString.call(t) === `[object ${x(e)}]`;
   };
 }
-function W(e, t) {
+function oe(e, t) {
   const n = new RegExp("(^|&)" + t + "=([^&]*)(&|$)"), r = e.match(n);
   return r !== null ? r[2] : null;
 }
-function ee(e, t = ".") {
+function se(e, t = ".") {
   if (!e)
     return !1;
   const n = e.trim().split(t);
@@ -57,10 +57,10 @@ function ee(e, t = ".") {
       return !1;
   return !0;
 }
-function te(e, t, n = void 0, r = ".") {
+function ue(e, t, n = void 0, r = ".") {
   if (!l("String")(t))
     throw new TypeError(`${t} is not string type`);
-  if (!ee(t, r))
+  if (!se(t, r))
     throw new Error(`Invalid: ${t}`);
   const i = t.trim().split(r);
   let o = e;
@@ -77,19 +77,19 @@ function te(e, t, n = void 0, r = ".") {
       return n;
   return o;
 }
-const ne = "[\\u2700-\\u27BF]", re = "[\\uE000-\\uF8FF]", ie = "\\uD83C[\\uDC00-\\uDFFF]", oe = "\\uD83D[\\uDC00-\\uDFFF]", se = "[\\u2011-\\u26FF]", ue = "\\uD83E[\\uDD10-\\uDDFF]";
-function le(e) {
+const le = "[\\u2700-\\u27BF]", ce = "[\\uE000-\\uF8FF]", ae = "\\uD83C[\\uDC00-\\uDFFF]", fe = "\\uD83D[\\uDC00-\\uDFFF]", he = "[\\u2011-\\u26FF]", ge = "\\uD83E[\\uDD10-\\uDDFF]";
+function me(e) {
   return RegExp(
-    `(${ne}|${re}|${ie}|${oe}|${se}|${ue})`,
+    `(${le}|${ce}|${ae}|${fe}|${he}|${ge})`,
     "g"
   ).test(e);
 }
-function ce(e) {
+function de(e) {
   return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
     e
   );
 }
-class a {
+class h {
   constructor() {
   }
   static notNull(t, n) {
@@ -121,74 +121,74 @@ class a {
     return /(^(h{1,2}):(m{1,2}):(s{1,2})$)|(^(h{1,2}):(m{1,2})$)/gi.test(t);
   }
 }
-p(a, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
-const v = "(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])", w = `(${v}[.]){3}${v}`, fe = new RegExp(`^${w}$`);
+p(h, "DEFAULT_NOT_NAN_EX_MESSAGE", "\u9A8C\u8BC1\u7684\u503C\u4E0D\u662F\u6570\u5B57");
+const N = "(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])", w = `(${N}[.]){3}${N}`, we = new RegExp(`^${w}$`);
 function P(e) {
-  return a.isString(e) === null ? !1 : fe.test(e);
+  return h.isString(e) === null ? !1 : we.test(e);
 }
-function F(e, t, n = !1) {
+function C(e, t, n = !1) {
   if (e !== null && t !== null) {
     const r = t.length;
-    return r > e.length ? !1 : ae(e, n, 0, t, 0, r);
+    return r > e.length ? !1 : ye(e, n, 0, t, 0, r);
   } else
     return e === t;
 }
-function ae(e, t, n, r, i, o) {
+function ye(e, t, n, r, i, o) {
   t && (e = e.toLowerCase(), r = r.toLowerCase());
   const s = n + o;
   let u = 0;
-  for (let f = n; f < s; f++) {
-    if (e.charAt(f) !== r.charAt(i + u))
+  for (let c = n; c < s; c++) {
+    if (e.charAt(c) !== r.charAt(i + u))
       return !1;
     u++;
   }
   return !0;
 }
-const ge = /^\d{1,3}$/;
-function he(e) {
-  if (a.isString(e) === null)
+const pe = /^\d{1,3}$/;
+function $e(e) {
+  if (h.isString(e) === null)
     return !1;
   const n = e.split("/");
-  return n.length !== 2 || !ge.test(n[1]) || n[1].length > 1 && F(n[1], "0") || !P(n[0]) ? !1 : Number(n[1]) <= 32 && Number(n[1]) >= 0;
+  return n.length !== 2 || !pe.test(n[1]) || n[1].length > 1 && C(n[1], "0") || !P(n[0]) ? !1 : Number(n[1]) <= 32 && Number(n[1]) >= 0;
 }
-const c = "(?:[0-9a-fA-F]{1,4})", me = new RegExp(
-  `^((?:${c}:){7}(?:${c}|:)|(?:${c}:){6}(?:${w}|:${c}|:)|(?:${c}:){5}(?::${w}|(:${c}){1,2}|:)|(?:${c}:){4}(?:(:${c}){0,1}:${w}|(:${c}){1,3}|:)|(?:${c}:){3}(?:(:${c}){0,2}:${w}|(:${c}){1,4}|:)|(?:${c}:){2}(?:(:${c}){0,3}:${w}|(:${c}){1,5}|:)|(?:${c}:){1}(?:(:${c}){0,4}:${w}|(:${c}){1,6}|:)|(?::((?::${c}){0,5}:${w}|(?::${c}){1,7}|:)))(%[0-9a-zA-Z-.:]{1,})?$`
+const f = "(?:[0-9a-fA-F]{1,4})", Se = new RegExp(
+  `^((?:${f}:){7}(?:${f}|:)|(?:${f}:){6}(?:${w}|:${f}|:)|(?:${f}:){5}(?::${w}|(:${f}){1,2}|:)|(?:${f}:){4}(?:(:${f}){0,1}:${w}|(:${f}){1,3}|:)|(?:${f}:){3}(?:(:${f}){0,2}:${w}|(:${f}){1,4}|:)|(?:${f}:){2}(?:(:${f}){0,3}:${w}|(:${f}){1,5}|:)|(?:${f}:){1}(?:(:${f}){0,4}:${w}|(:${f}){1,6}|:)|(?::((?::${f}){0,5}:${w}|(?::${f}){1,7}|:)))(%[0-9a-zA-Z-.:]{1,})?$`
 );
 function R(e) {
-  return a.isString(e) === null ? !1 : me.test(e);
+  return h.isString(e) === null ? !1 : Se.test(e);
 }
-const de = /^\d{1,3}$/;
-function we(e) {
-  if (a.isString(e) === null)
+const be = /^\d{1,3}$/;
+function Ee(e) {
+  if (h.isString(e) === null)
     return !1;
   const n = e.split("/");
-  return n.length !== 2 || !de.test(n[1]) || n[1].length > 1 && F(n[1], "0") || !R(n[0]) ? !1 : Number(n[1]) <= 128 && Number(n[1]) >= 0;
+  return n.length !== 2 || !be.test(n[1]) || n[1].length > 1 && C(n[1], "0") || !R(n[0]) ? !1 : Number(n[1]) <= 128 && Number(n[1]) >= 0;
 }
-function ye(e) {
+function Te(e) {
   return /^((\+86)|(86))?(1)\d{10}$/.test("" + e);
 }
-function pe(e) {
+function Ae(e) {
   return /^(\(\d{3,4}\)|\d{3,4}(-|\s)?)?\d{7,8}(-\d{1,4})?$/.test("" + e);
 }
 function m(e, t) {
-  if (a.isString(e) === null)
+  if (h.isString(e) === null)
     return !1;
-  const r = /^(?:[-+]?(?:0|[1-9][0-9]*))$/, i = /^[-+]?[0-9]+$/, o = t || {}, s = Object.prototype.hasOwnProperty, f = (Object.prototype.hasOwnProperty.call(o, "zeroes") && !o.zeroes ? r : i).test(e), d = parseInt(e, 10);
-  return f && (!s.call(o, "min") || d >= o.min) && (!s.call(o, "max") || d <= o.max) && (!s.call(o, "lt") || d < o.lt) && (!s.call(o, "gt") || d > o.gt);
+  const r = /^(?:[-+]?(?:0|[1-9][0-9]*))$/, i = /^[-+]?[0-9]+$/, o = t || {}, s = Object.prototype.hasOwnProperty, c = (Object.prototype.hasOwnProperty.call(o, "zeroes") && !o.zeroes ? r : i).test(e), a = parseInt(e, 10);
+  return c && (!s.call(o, "min") || a >= o.min) && (!s.call(o, "max") || a <= o.max) && (!s.call(o, "lt") || a < o.lt) && (!s.call(o, "gt") || a > o.gt);
 }
-function $e(e) {
+function De(e) {
   return m(e, { min: 0, max: 65535 });
 }
-function be(e) {
+function xe(e) {
   return /^\d{6}$/.test("" + e);
 }
-const Se = C("Function");
+const Fe = F("Function");
 class y {
   constructor(t, n = "nextSuccessor") {
     p(this, "fn");
     p(this, "nextNode");
     p(this, "nextFlag");
-    if (!Se(t))
+    if (!Fe(t))
       throw new Error(`${t} is no a function`);
     this.fn = t, this.nextNode = null, this.nextFlag = n;
   }
@@ -204,65 +204,65 @@ class y {
     return this.nextNode && this.nextNode.start.apply(this.nextNode, arguments);
   }
 }
-const Ee = C("Object"), Ae = function(e) {
+const Ce = F("Object"), Ie = function(e) {
   return Object.getOwnPropertyNames(e).length === 0 ? !0 : "nextSuccessor";
-}, Te = function(e) {
+}, Me = function(e) {
   return Object.keys(e).length === 0;
 };
 function E(e) {
-  if (!Ee(e))
+  if (!Ce(e))
     throw new Error(`${e} is no a object type`);
-  const t = new y(Ae);
-  return t.after(Te), t.start(e);
+  const t = new y(Ie);
+  return t.after(Me), t.start(e);
 }
-function De(e) {
+function ve(e) {
   const t = /([^?=&]+)=([^&]*)/gi, n = {};
   return e.replace(t, (r, i, o) => {
     n[i] = o;
   }), E(n) ? "nextSuccessor" : n;
 }
-function xe(e) {
+function Ne(e) {
   const t = e.split("?")[1], n = {}, r = t && t.split("&");
   return r && r.reduce((i, o) => {
     const s = o.split("=");
     return i[s[0]] = s[1], i;
   }, n), E(n) ? "nextSuccessor" : n;
 }
-function Ce(e) {
+function Pe(e) {
   const t = e.split("?")[1], n = new URLSearchParams(t), r = {};
   for (const i of n)
     r[i[0]] = i[1];
   return E(r) ? null : r;
 }
-function Fe(e) {
-  const t = new y(De);
-  return t.after(xe).after(Ce), t.start(e);
+function Re(e) {
+  const t = new y(ve);
+  return t.after(Ne).after(Pe), t.start(e);
 }
-const Ie = {
-  createType: C,
-  getURLValueByKey: W,
-  getValue: te,
-  hasEmoji: le,
-  isEmail: ce,
+const Oe = {
+  createType: F,
+  getURLValueByKey: oe,
+  getValue: ue,
+  hasEmoji: me,
+  isEmail: de,
   isIPv4: P,
-  isIPv4Range: he,
+  isIPv4Range: $e,
   isIPv6: R,
-  isIPv6Range: we,
-  isMobile: ye,
-  isPhone: pe,
-  isPort: $e,
-  isPostalCode: be,
-  queryURLParams: Fe,
+  isIPv6Range: Ee,
+  isMobile: Te,
+  isPhone: Ae,
+  isPort: De,
+  isPostalCode: xe,
+  queryURLParams: Re,
   validateTypeHoc: l
 };
-function Me(e) {
+function Le(e) {
   if (e === null)
     return null;
   if (!l("Array")(e))
     throw new TypeError("The ary must be array");
   return [...e];
 }
-function Ne(e, t) {
+function Ue(e, t) {
   if (!l("Array")(e))
     throw new TypeError("The list must be array");
   if (e.length === 0)
@@ -275,7 +275,7 @@ function Ne(e, t) {
     throw new TypeError("The index must be number");
   return e.splice(t, 1), e;
 }
-function ve(e, t, n) {
+function _e(e, t, n) {
   if (!l("Array")(e))
     throw new TypeError("The list must be array");
   const r = [...e];
@@ -287,7 +287,7 @@ function ve(e, t, n) {
     throw new TypeError("The index must be number");
   return r;
 }
-function Pe(e, t) {
+function Ye(e, t) {
   if (!l("Array")(e))
     throw new TypeError("The list must be array");
   const n = [...e];
@@ -301,58 +301,58 @@ function Pe(e, t) {
     throw new TypeError("The index must be number");
   return n.splice(t, 1), n;
 }
-const Re = {
-  add: J,
-  addAll: Q,
-  clone: Me,
-  remove: Ne,
-  toAdded: ve,
-  toRemoved: Pe
+const je = {
+  add: re,
+  addAll: ie,
+  clone: Le,
+  remove: Ue,
+  toAdded: _e,
+  toRemoved: Ye
 };
-function h(e, t) {
+function d(e, t) {
   if (!l("string")(e))
     throw new TypeError("The parameter type is string");
   return t !== void 0 && e.length === 0 ? t : e.charAt(0);
 }
-function Oe(e, t) {
-  const n = h(e), r = h(t);
+function He(e, t) {
+  const n = d(e), r = d(t);
   return Number.isNaN(n.charCodeAt(0)) && Number.isNaN(r.charCodeAt(0)) ? 0 : n.charCodeAt(0) - r.charCodeAt(0);
 }
-function Le(e) {
-  return h(e).charCodeAt(0) < 128;
+function qe(e) {
+  return d(e).charCodeAt(0) < 128;
 }
 function O(e) {
-  const t = h(e);
+  const t = d(e);
   return t >= "A" && t <= "Z";
 }
 function L(e) {
-  const t = h(e);
+  const t = d(e);
   return t >= "a" && t <= "z";
 }
 function U(e) {
   return O(e) || L(e);
 }
 function I(e) {
-  const t = h(e);
+  const t = d(e);
   return t >= "0" && t <= "9";
 }
-function Ue(e) {
+function Be(e) {
   return U(e) || I(e);
 }
-function _e(e) {
-  const t = h(e);
+function Ze(e) {
+  const t = d(e);
   return t < " " || t.charCodeAt(0) < 32 || t.charCodeAt(0) === 127;
 }
-function je(e) {
-  const t = h(e);
+function ze(e) {
+  const t = d(e);
   return (t >= " " || t.charCodeAt(0) >= 32) && t.charCodeAt(0) < 127;
 }
 function M(e) {
-  const t = h(e);
+  const t = d(e);
   return t === " " || t === `
 ` || t === "\r" || t === "	" || t === "\f";
 }
-function Ye(e, t) {
+function Ve(e, t) {
   if (!I(e)) {
     if (t !== void 0)
       return t;
@@ -360,33 +360,33 @@ function Ye(e, t) {
   }
   return e.charCodeAt(0) - 48;
 }
-const b = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
-function He(e) {
-  const t = h(e).charCodeAt(0);
-  return "\\u" + b[t >> 12 & 15] + b[t >> 8 & 15] + b[t >> 4 & 15] + b[t & 15];
+const S = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+function ke(e) {
+  const t = d(e).charCodeAt(0);
+  return "\\u" + S[t >> 12 & 15] + S[t >> 8 & 15] + S[t >> 4 & 15] + S[t & 15];
 }
-function qe(e) {
+function Ge(e) {
   return e.replace(/\\u([\d\w]{4})/gi, function(t, n) {
     return String.fromCharCode(parseInt(n, 16));
   });
 }
-const Be = {
-  compare: Oe,
-  isAscii: Le,
+const Ke = {
+  compare: He,
+  isAscii: qe,
   isAsciiAlpha: U,
   isAsciiAlphaLower: L,
-  isAsciiAlphanumeric: Ue,
+  isAsciiAlphanumeric: Be,
   isAsciiAlphaUpper: O,
-  isAsciiControl: _e,
+  isAsciiControl: Ze,
   isAsciiNumeric: I,
-  isAsciiPrintable: je,
+  isAsciiPrintable: ze,
   isWhitespace: M,
-  toChar: h,
-  toIntValue: Ye,
-  unicodeEscaped: He,
-  unicodeUnescaped: qe
+  toChar: d,
+  toIntValue: Ve,
+  unicodeEscaped: ke,
+  unicodeUnescaped: Ge
 };
-function Ze(e, t) {
+function _(e, t) {
   if (!l("Date")(e))
     throw new TypeError(`Invalid date: ${e}`);
   if (!m(t + ""))
@@ -394,7 +394,7 @@ function Ze(e, t) {
   const n = new Date(e.getTime());
   return n.setDate(n.getDate() + (l("Number")(t) ? t : +t)), n;
 }
-function ze(e, t) {
+function Y(e, t) {
   if (!l("Date")(e))
     throw new TypeError(`Invalid date: ${e}`);
   if (!m(t + ""))
@@ -402,7 +402,7 @@ function ze(e, t) {
   const n = new Date(e.getTime());
   return n.setHours(n.getHours() + (l("Number")(t) ? t : +t)), n;
 }
-function Ve(e, t) {
+function j(e, t) {
   if (!l("Date")(e))
     throw new TypeError(`Invalid date: ${e}`);
   if (!m(t + ""))
@@ -410,7 +410,15 @@ function Ve(e, t) {
   const n = new Date(e.getTime());
   return n.setMinutes(n.getMinutes() + (l("Number")(t) ? t : +t)), n;
 }
-function ke(e, t) {
+function H(e, t) {
+  if (!l("Date")(e))
+    throw new TypeError(`Invalid date: ${e}`);
+  if (!m(t + ""))
+    throw new SyntaxError(`Invalid number: ${t}`);
+  const n = new Date(e.getTime());
+  return n.setMonth(n.getMonth() + (l("Number")(t) ? t : +t)), n;
+}
+function q(e, t) {
   if (!l("Date")(e))
     throw new TypeError(`Invalid date: ${e}`);
   if (!m(t + ""))
@@ -418,33 +426,52 @@ function ke(e, t) {
   const n = new Date(e.getTime());
   return n.setSeconds(n.getSeconds() + (l("Number")(t) ? t : +t)), n;
 }
-function Ge(e, t = 0, n = 0, r = 0, i = 0) {
+function B(e, t) {
   if (!l("Date")(e))
     throw new TypeError(`Invalid date: ${e}`);
-  if (!m(t + "") || !m(n + "") || !m(r + "") || !m(i + ""))
-    throw new SyntaxError("Invalid time values");
-  const o = new Date(e.getTime());
-  return o.setDate(o.getDate() + (l("Number")(t) ? t : +t)), o.setHours(o.getHours() + (l("Number")(n) ? n : +n)), o.setMinutes(o.getMinutes() + (l("Number")(r) ? r : +r)), o.setSeconds(o.getSeconds() + (l("Number")(i) ? i : +i)), o;
+  if (!m(t + ""))
+    throw new SyntaxError(`Invalid number: ${t}`);
+  const n = new Date(e.getTime());
+  return n.setFullYear(n.getFullYear() + (l("Number")(t) ? t : +t)), n;
 }
-function Ke(e) {
+function Xe(e, t) {
+  if (!l("Date")(e))
+    throw new TypeError(`Invalid date: ${e}`);
+  const n = {
+    years: 0,
+    months: 0,
+    days: 0,
+    hours: 0,
+    mins: 0,
+    secs: 0
+  }, { years: r, months: i, days: o, hours: s, mins: u, secs: c } = {
+    ...n,
+    ...t
+  };
+  if (!m(r + "") || !m(i + "") || !m(o + "") || !m(s + "") || !m(u + "") || !m(c + ""))
+    throw new SyntaxError("Invalid time values");
+  let a = new Date(e.getTime());
+  return a = B(a, r), a = H(a, i), a = _(a, o), a = Y(a, s), a = j(a, u), a = q(a, c), a;
+}
+function Je(e) {
   return /(^(y{4}|y{2})[.\u002f-](m{1,2})[.\u002f-](d{1,2})$)|(^(m{1,2})[.\u002f-](d{1,2})[.\u002f-]((y{4}|y{2})$))|(^(d{1,2})[.\u002f-](m{1,2})[.\u002f-]((y{4}|y{2})$))/gi.test(
     e
   );
 }
-function Xe(e, t) {
+function Qe(e, t) {
   const n = [], r = Math.min(e.length, t.length);
   for (let i = 0; i < r; i++)
     n.push([e[i], t[i]]);
   return n;
 }
-function S(e, t) {
+function b(e, t) {
   if (t = {
     format: "YYYY/MM/DD",
     delimiters: ["/", "-"],
     strictMode: !1,
     ...t
-  }, l("String")(e) && Ke(t.format)) {
-    const n = t.delimiters.find((s) => t.format.indexOf(s) !== -1), r = t.strictMode ? n : t.delimiters.find((s) => e.indexOf(s) !== -1), i = Xe(e.split(r), t.format.toLowerCase().split(n)), o = {};
+  }, l("String")(e) && Je(t.format)) {
+    const n = t.delimiters.find((s) => t.format.indexOf(s) !== -1), r = t.strictMode ? n : t.delimiters.find((s) => e.indexOf(s) !== -1), i = Qe(e.split(r), t.format.toLowerCase().split(n)), o = {};
     for (const [s, u] of i) {
       if (s.length !== u.length)
         return !1;
@@ -454,27 +481,27 @@ function S(e, t) {
   }
   return t.strictMode ? !1 : l("Date")(e);
 }
-function Je(e, t) {
+function We(e, t) {
   const n = [], r = Math.min(e.length, t.length);
   for (let i = 0; i < r; i++)
     n.push([e[i], t[i]]);
   return n;
 }
-function Qe(e, t, n) {
-  const r = t.delimiters.find((u) => t.format.indexOf(u) !== -1), i = t.strictMode ? r : t.delimiters.find((u) => e.indexOf(u) !== -1), o = Je(e.split(i), t.format.toLowerCase().split(r)), s = {};
-  for (const [u, f] of o) {
-    if (u.length !== f.length)
+function et(e, t, n) {
+  const r = t.delimiters.find((u) => t.format.indexOf(u) !== -1), i = t.strictMode ? r : t.delimiters.find((u) => e.indexOf(u) !== -1), o = We(e.split(i), t.format.toLowerCase().split(r)), s = {};
+  for (const [u, c] of o) {
+    if (u.length !== c.length)
       throw new SyntaxError(`${t.format} format is error`);
-    s[f.charAt(0)] = u;
+    s[c.charAt(0)] = u;
   }
   return n.format.replace(/(y{4}|y{2})/gi, s.y).replace(/(m{1,2})/gi, s.m).replace(/(d{1,2})/gi, s.d);
 }
-function We(e, t) {
+function tt(e, t) {
   const n = e.getFullYear();
   return t.format.replace(/(y{4}|y{2})/gi, n + "").replace(/(m{1,2})/gi, (i) => i.length === 1 ? String(e.getMonth() + 1) : String(e.getMonth() + 1).padStart(2, "0")).replace(/(d{1,2})/gi, (i) => i.length === 1 ? String(e.getDate()) : String(e.getDate()).padStart(2, "0"));
 }
-function _(e) {
-  if (!a.isValidDateFormat(e.format))
+function Z(e) {
+  if (!h.isValidDateFormat(e.format))
     throw new SyntaxError(`${e.format} is not valid date format`);
   return function(t, n) {
     if (n = {
@@ -482,30 +509,30 @@ function _(e) {
       delimiters: ["/", "-"],
       strictMode: !1,
       ...n
-    }, !S(t, n))
+    }, !b(t, n))
       throw new SyntaxError(`${t} is not valid date`);
     if (l("String")(t))
-      return Qe(t, n, e);
+      return et(t, n, e);
     if (l("Date")(t))
-      return We(t, e);
+      return tt(t, e);
   };
 }
-function et(e, t, n) {
+function nt(e, t, n) {
   const r = n || {
     start: void 0,
     finish: void 0
   };
-  if (!S(e, r.start) || !S(t, r.finish))
+  if (!b(e, r.start) || !b(t, r.finish))
     throw new SyntaxError("Invalid date values");
-  const i = _({
+  const i = Z({
     format: "YYYY/MM/DD"
-  }), o = 24 * 60 * 60 * 1e3, s = new Date(i(e, r.start)), u = new Date(i(t, r.finish)), f = Math.abs(u.getTime() - s.getTime());
-  return Math.ceil(f / o);
+  }), o = 24 * 60 * 60 * 1e3, s = new Date(i(e, r.start)), u = new Date(i(t, r.finish)), c = Math.abs(u.getTime() - s.getTime());
+  return Math.ceil(c / o);
 }
-function j(e) {
+function z(e) {
   return new Date(e.getFullYear(), 2, 0).getDate() === 29;
 }
-function tt(e) {
+function rt(e) {
   switch (e.getMonth()) {
     case 0:
     case 2:
@@ -516,40 +543,16 @@ function tt(e) {
     case 11:
       return 31;
     case 1:
-      return j(e) ? 29 : 28;
+      return z(e) ? 29 : 28;
     default:
       return 30;
   }
 }
-function nt(e) {
+function it(e) {
   return new Date(e.getFullYear(), e.getMonth(), 1);
 }
-function rt(e) {
+function ot(e) {
   return new Date(e.getFullYear(), e.getMonth() + 1, 0);
-}
-const it = {
-  24: {
-    default: /^([01]?\d|2[0-3]):([0-5]\d)$/,
-    hasSecond: /^([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)$/
-  },
-  12: {
-    default: /^(0?\d|1[0-2]):([0-5]\d) (A|P)M$/,
-    hasSecond: /^(0?\d|1[0-2]):([0-5]\d):([0-5]\d) (A|P)M$/
-  }
-};
-function ot(e, t) {
-  if (!l("String")(e))
-    return !1;
-  if (t = {
-    format: "HH:MM:SS",
-    mode: 24,
-    ...t
-  }, !a.isTimeFormat(t.format))
-    throw new SyntaxError(`${t.format} is not valid format`);
-  if (![24, 12].includes(t.mode))
-    throw new SyntaxError(`${t.mode} is not valid mode`);
-  const n = t.format.match(/s/ig), r = n && n.length > 0;
-  return it[t.mode][r ? "hasSecond" : "default"].test(e);
 }
 const st = {
   24: {
@@ -561,11 +564,35 @@ const st = {
     hasSecond: /^(0?\d|1[0-2]):([0-5]\d):([0-5]\d) (A|P)M$/
   }
 };
-function Y(e, t, n) {
+function ut(e, t) {
+  if (!l("String")(e))
+    return !1;
+  if (t = {
+    format: "HH:MM:SS",
+    mode: 24,
+    ...t
+  }, !h.isTimeFormat(t.format))
+    throw new SyntaxError(`${t.format} is not valid format`);
+  if (![24, 12].includes(t.mode))
+    throw new SyntaxError(`${t.mode} is not valid mode`);
+  const n = t.format.match(/s/ig), r = n && n.length > 0;
+  return st[t.mode][r ? "hasSecond" : "default"].test(e);
+}
+const lt = {
+  24: {
+    default: /^([01]?\d|2[0-3]):([0-5]\d)$/,
+    hasSecond: /^([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)$/
+  },
+  12: {
+    default: /^(0?\d|1[0-2]):([0-5]\d) (A|P)M$/,
+    hasSecond: /^(0?\d|1[0-2]):([0-5]\d):([0-5]\d) (A|P)M$/
+  }
+};
+function V(e, t, n) {
   let r;
   for (const i in t)
     if (["12", "24"].includes(i)) {
-      const o = Y(e, t[i], i);
+      const o = V(e, t[i], i);
       o && (r = o);
     } else if (t[i].test(e))
       return {
@@ -575,13 +602,13 @@ function Y(e, t, n) {
       };
   return r;
 }
-function ut(e) {
-  if (!a.isTimeFormat(e.format))
+function ct(e) {
+  if (!h.isTimeFormat(e.format))
     throw new SyntaxError(`${e.format} is not valid format`);
   if (![24, 12].includes(e.mode))
     throw new SyntaxError(`${e.mode} is not valid mode`);
   return function(t) {
-    const n = Y(t, st, void 0);
+    const n = V(t, lt, void 0);
     if (!n)
       throw new SyntaxError(`${t} is not valid time`);
     const r = {
@@ -591,8 +618,8 @@ function ut(e) {
       b: ""
     };
     if (n.mode === "12") {
-      const [o, s, u, f] = [...n.matches].splice(1, 4);
-      r.h = o, r.m = s, r.s = u, r.b = f, e.mode === 24 && f === "P" && (r.h = +o + 12 + "");
+      const [o, s, u, c] = [...n.matches].splice(1, 4);
+      r.h = o, r.m = s, r.s = u, r.b = c, e.mode === 24 && c === "P" && (r.h = +o + 12 + "");
     } else if (n.mode === "24") {
       const [o, s, u] = [...n.matches].splice(1, 3);
       r.h = o, r.m = s, r.s = u;
@@ -605,39 +632,41 @@ function ut(e) {
     return e.mode === 12 && r.b && (i += ` ${r.b}M`), i;
   };
 }
-function lt(e) {
-  const t = new Date(e.getTime()), n = t.getUTCFullYear(), r = String(t.getUTCMonth() + 1).padStart(2, "0"), i = String(t.getUTCDate()).padStart(2, "0"), o = String(t.getUTCHours()).padStart(2, "0"), s = String(t.getUTCMinutes()).padStart(2, "0"), u = String(t.getUTCSeconds()).padStart(2, "0"), f = String((t.getUTCMilliseconds() / 1e3).toFixed(3).slice(2, 5)).padStart(3, "0");
-  return `${n}-${r}-${i}T${o}:${s}:${u}.${f}Z`;
+function at(e) {
+  const t = new Date(e.getTime()), n = t.getUTCFullYear(), r = String(t.getUTCMonth() + 1).padStart(2, "0"), i = String(t.getUTCDate()).padStart(2, "0"), o = String(t.getUTCHours()).padStart(2, "0"), s = String(t.getUTCMinutes()).padStart(2, "0"), u = String(t.getUTCSeconds()).padStart(2, "0"), c = String((t.getUTCMilliseconds() / 1e3).toFixed(3).slice(2, 5)).padStart(3, "0");
+  return `${n}-${r}-${i}T${o}:${s}:${u}.${c}Z`;
 }
-const ct = {
-  addDays: Ze,
-  addHours: ze,
-  addMinutes: Ve,
-  addSecs: ke,
-  addTime: Ge,
-  dateFormatHoc: _,
-  getDatePeriod: et,
-  getDaysInMonth: tt,
-  getFirstDateInMonth: nt,
-  getLastDateInMonth: rt,
-  isDate: S,
-  isLeapYear: j,
-  isTime: ot,
-  timeFormatHoc: ut,
-  toISOString: lt
+const ft = {
+  addDays: _,
+  addHours: Y,
+  addMinutes: j,
+  addMonths: H,
+  addSecs: q,
+  addTime: Xe,
+  addYears: B,
+  dateFormatHoc: Z,
+  getDatePeriod: nt,
+  getDaysInMonth: rt,
+  getFirstDateInMonth: it,
+  getLastDateInMonth: ot,
+  isDate: b,
+  isLeapYear: z,
+  isTime: ut,
+  timeFormatHoc: ct,
+  toISOString: at
 };
-function ft(e, t) {
-  const n = a.isString(e);
+function ht(e, t) {
+  const n = h.isString(e);
   if ([null, "", ".", ",", "-", "+"].includes(n))
     return !1;
   const r = new RegExp("^(?:[-+])?(?:[0-9]+)?(?:\\.[0-9]*)?(?:[eE][\\+\\-]?(?:[0-9]+))?$"), i = t || {}, o = Object.prototype.hasOwnProperty, s = parseFloat(n.replace(",", "."));
   return r.test(e) && (!o.call(i, "min") || s >= i.min) && (!o.call(i, "max") || s <= i.max) && (!o.call(i, "lt") || s < i.lt) && (!o.call(i, "gt") || s > i.gt);
 }
-const at = {
-  isFloat: ft,
+const gt = {
+  isFloat: ht,
   isInteger: m
 };
-function H(...e) {
+function k(...e) {
   if (e === null)
     return !1;
   for (const t of e)
@@ -645,19 +674,19 @@ function H(...e) {
       return !1;
   return !0;
 }
-const gt = {
-  allNotNull: H,
+const mt = {
+  allNotNull: k,
   isEmpty: E
 };
 function $(e, t) {
-  const n = a.isString(e), r = a.isString(t);
+  const n = h.isString(e), r = h.isString(t);
   return n === r;
 }
 function g(e) {
-  const t = a.isString(e);
+  const t = h.isString(e);
   return t === null || t.length === 0;
 }
-function q(...e) {
+function G(...e) {
   if (e.length === 0)
     return !1;
   for (const t of e)
@@ -665,23 +694,23 @@ function q(...e) {
       return !0;
   return !1;
 }
-function A(e) {
-  const t = a.isString(e);
+function T(e) {
+  const t = h.isString(e);
   return t === null ? 0 : t.length;
 }
-function B(e, t = 0, n = 0) {
+function K(e, t = 0, n = 0) {
   if (e === null)
     return e;
   const r = l("Number");
   if (!r(t) || !r(n))
     throw new TypeError("The start or end paramter type is number");
-  const i = A(e);
+  const i = T(e);
   return n < 0 && (n = i + n), t < 0 && (t = i + t), n > i && (n = i), t > n ? "" : (t < 0 && (t = 0), n < 0 && (n = 0), e.substring(t, n));
 }
-function Z(e, t, n, r) {
+function X(e, t, n, r) {
   if (!g(e) && $("", t) && t.length > 0)
-    return B(e, 0, r);
-  if (q(e, t))
+    return K(e, 0, r);
+  if (G(e, t))
     return e;
   {
     const i = t.length, o = i + 1, s = i + i + 1;
@@ -695,14 +724,14 @@ function Z(e, t, n, r) {
         return e.substring(0, r - i) + t;
       if (r < s)
         throw new RangeError(`Minimum abbreviation width with offset is ${s}`);
-      return n + r - i < u ? t + Z(e.substring(n), t, 0, r - i) : t + e.substring(u - (r - i));
+      return n + r - i < u ? t + X(e.substring(n), t, 0, r - i) : t + e.substring(u - (r - i));
     }
   }
 }
-function ht(e, t, n) {
+function dt(e, t, n) {
   return n ? (n + e + n).indexOf(n + t + n) > -1 : e.indexOf(t) > -1;
 }
-function mt(e, ...t) {
+function wt(e, ...t) {
   if (t.length !== 0) {
     for (const n of t)
       if ($(e, n))
@@ -710,7 +739,7 @@ function mt(e, ...t) {
   }
   return !1;
 }
-function z(e, t) {
+function J(e, t) {
   if ($(e, t))
     return !0;
   if (e !== null && t !== null) {
@@ -723,15 +752,15 @@ function z(e, t) {
   } else
     return !1;
 }
-function dt(e, ...t) {
+function yt(e, ...t) {
   if (t.length !== 0) {
     for (const n of t)
-      if (z(e, n))
+      if (J(e, n))
         return !0;
   }
   return !1;
 }
-function wt(e) {
+function pt(e) {
   return e.replace(/[&<>'"]/g, (t) => ({
     "&": "&amp;",
     "<": "&lt;",
@@ -740,39 +769,39 @@ function wt(e) {
     '"': "&quot;"
   })[t] || t);
 }
-function T(e) {
-  const t = a.isString(e);
+function A(e) {
+  const t = h.isString(e);
   return t === null ? null : t.replace(/(^\s*)|(\s*$)/g, "");
 }
-function V(e) {
+function Q(e) {
   return new RegExp("[A-Za-z]+", "g").test(e);
 }
-const yt = function(e, t) {
+const $t = function(e, t) {
   let n = 0;
   for (let r = 0; r < e.length; r++)
-    V(e[r]) ? n++ : n += t;
+    Q(e[r]) ? n++ : n += t;
   return n;
 };
-function pt(e, t = !1, n = 2) {
-  return t ? yt(T(e), n) : e.length;
-}
-function $t(e) {
-  return new RegExp("[\\u4E00-\\u9FFF]+", "g").test(e);
+function St(e, t = !1, n = 2) {
+  return t ? $t(A(e), n) : e.length;
 }
 function bt(e) {
-  const t = a.isString(e);
+  return new RegExp("[\\u4E00-\\u9FFF]+", "g").test(e);
+}
+function Et(e) {
+  const t = h.isString(e);
   return t === null ? null : t.replace(/(^\s*)/g, "");
 }
-function St(e) {
-  const t = a.isString(e);
+function Tt(e) {
+  const t = h.isString(e);
   return t === null ? null : t.replace(/(\s*$)/g, "");
 }
-function k(e, t = null) {
-  let n = A(e);
+function W(e, t = null) {
+  let n = T(e);
   if (n === 0)
     return e;
   {
-    const r = a.isString(t);
+    const r = h.isString(t);
     if (r === null)
       for (; n !== 0 && M(e.charAt(n - 1)); )
         --n;
@@ -785,13 +814,13 @@ function k(e, t = null) {
     return e.substring(0, n);
   }
 }
-function G(e, t = null) {
-  const n = A(e);
+function ee(e, t = null) {
+  const n = T(e);
   if (n === 0)
     return e;
   {
     let r = 0;
-    const i = a.isString(t);
+    const i = h.isString(t);
     if (i === null)
       for (; r !== n && M(e.charAt(r)); )
         ++r;
@@ -805,9 +834,9 @@ function G(e, t = null) {
   }
 }
 function D(e, t = null) {
-  return e = G(e, t), k(e, t);
+  return e = ee(e, t), W(e, t);
 }
-function Et(e, t = null) {
+function At(e, t = null) {
   if (e === null)
     return null;
   if (!Array.isArray(e))
@@ -820,13 +849,13 @@ function Et(e, t = null) {
     r.push(D(e[i], t));
   return r;
 }
-function At(e) {
+function Dt(e) {
   return e === null ? "" : D(e, null);
 }
-function Tt(e) {
+function xt(e) {
   return e === null ? null : (e = D(e, null), e.length === 0 ? null : e);
 }
-function Dt(e, t = null) {
+function Ft(e, t = null) {
   if (g(e))
     return e;
   if (typeof t == "number")
@@ -845,7 +874,7 @@ function Dt(e, t = null) {
       throw new TypeError("The separator type is string | number | null");
   }
 }
-function xt(e, t = null) {
+function Ct(e, t = null) {
   if (g(e))
     return e;
   if (typeof t == "number")
@@ -864,7 +893,7 @@ function xt(e, t = null) {
       throw new TypeError("The separator type is string | number | null");
   }
 }
-function Ct(e, t = null) {
+function It(e, t = null) {
   if (g(e))
     return e;
   if (typeof t == "number")
@@ -883,7 +912,7 @@ function Ct(e, t = null) {
       throw new TypeError("The separator type is string | number | null");
   }
 }
-function Ft(e, t = null) {
+function Mt(e, t = null) {
   if (g(e))
     return e;
   if (typeof t == "number")
@@ -902,8 +931,8 @@ function Ft(e, t = null) {
       throw new TypeError("The separator type is string | number | null");
   }
 }
-function It(e, t, n) {
-  if (H(e, t, n)) {
+function vt(e, t, n) {
+  if (k(e, t, n)) {
     const r = e.indexOf(t);
     if (r !== -1) {
       const i = e.indexOf(n, r + t.length);
@@ -914,7 +943,7 @@ function It(e, t, n) {
   } else
     return null;
 }
-function Mt(e, t, n) {
+function Nt(e, t, n) {
   if (e === null || g(t) || g(n))
     return null;
   const r = e.length;
@@ -923,26 +952,26 @@ function Mt(e, t, n) {
   {
     const i = n.length, o = t.length, s = [];
     let u;
-    for (let f = 0; f < r - i; f = u + i) {
-      const d = e.indexOf(t, f);
-      if (d < 0)
+    for (let c = 0; c < r - i; c = u + i) {
+      const a = e.indexOf(t, c);
+      if (a < 0)
         break;
-      const N = d + o;
-      if (u = e.indexOf(n, N), u < 0)
+      const v = a + o;
+      if (u = e.indexOf(n, v), u < 0)
         break;
-      s.push(e.substring(N, u));
+      s.push(e.substring(v, u));
     }
     return s.length === 0 ? null : s;
   }
 }
-function Nt(e) {
-  return e === null ? "" : T(e);
+function Pt(e) {
+  return e === null ? "" : A(e);
 }
-function vt(e) {
-  const t = T(e);
+function Rt(e) {
+  const t = A(e);
   return g(t) ? null : t;
 }
-function Pt(e, t, n) {
+function Ot(e, t, n) {
   if (t < 0)
     throw new RangeError("offset cannot be negative");
   if (n < 0)
@@ -957,7 +986,7 @@ function Pt(e, t, n) {
   } else
     return e.substring(t);
 }
-function Rt(e) {
+function Lt(e) {
   return e.replace(/&amp;|&lt;|&gt;|&#39;|&quot;/g, (t) => ({
     "&amp;": "&",
     "&lt;": "<",
@@ -966,10 +995,10 @@ function Rt(e) {
     "&quot;": '"'
   })[t] || t);
 }
-function Ot(e, t) {
+function Ut(e, t) {
   return g(e) || g(t) ? e : t.concat(e).concat(t);
 }
-function Lt(e, t) {
+function _t(e, t) {
   if (g(e) || g(t))
     return e;
   const n = !e.startsWith(t), r = !e.endsWith(t);
@@ -980,62 +1009,62 @@ function Lt(e, t) {
     return n && (i = i.concat(t)), i = i.concat(e), r && (i = i.concat(t)), i;
   }
 }
-const Ut = {
-  abbreviate: Z,
-  contains: ht,
+const Yt = {
+  abbreviate: X,
+  contains: dt,
   equals: $,
-  equalsAny: mt,
-  equalsAnyIgnoreCase: dt,
-  equalsIgnoreCase: z,
-  escapeHTML: wt,
-  getStrLength: pt,
-  isAnyEmpty: q,
+  equalsAny: wt,
+  equalsAnyIgnoreCase: yt,
+  equalsIgnoreCase: J,
+  escapeHTML: pt,
+  getStrLength: St,
+  isAnyEmpty: G,
   isEmpty: g,
-  isEN: V,
-  isZH: $t,
-  length: A,
-  ltrim: bt,
-  rtrim: St,
-  startsWith: F,
+  isEN: Q,
+  isZH: bt,
+  length: T,
+  ltrim: Et,
+  rtrim: Tt,
+  startsWith: C,
   strip: D,
-  stripAll: Et,
-  stripEnd: k,
-  stripStart: G,
-  stripToEmpty: At,
-  stripToNull: Tt,
-  substring: B,
-  substringAfter: Dt,
-  substringAfterLast: xt,
-  substringBefore: Ct,
-  substringBeforeLast: Ft,
-  substringBetween: It,
-  substringsBetween: Mt,
-  trim: T,
-  trimToEmpty: Nt,
-  trimToNull: vt,
-  truncate: Pt,
-  unescapeHTML: Rt,
+  stripAll: At,
+  stripEnd: W,
+  stripStart: ee,
+  stripToEmpty: Dt,
+  stripToNull: xt,
+  substring: K,
+  substringAfter: Ft,
+  substringAfterLast: Ct,
+  substringBefore: It,
+  substringBeforeLast: Mt,
+  substringBetween: vt,
+  substringsBetween: Nt,
+  trim: A,
+  trimToEmpty: Pt,
+  trimToNull: Rt,
+  truncate: Ot,
+  unescapeHTML: Lt,
   upperCase: x,
-  wrap: Ot,
-  wrapIfMissing: Lt
-}, jt = {
-  ArrayUtils: Re,
-  CharUtils: Be,
-  DateUtils: ct,
+  wrap: Ut,
+  wrapIfMissing: _t
+}, Ht = {
+  ArrayUtils: je,
+  CharUtils: Ke,
+  DateUtils: ft,
   DutyLink: y,
-  NumberUtils: at,
-  ObjectUtils: gt,
-  StringUtils: Ut,
-  Utils: Ie
+  NumberUtils: gt,
+  ObjectUtils: mt,
+  StringUtils: Yt,
+  Utils: Oe
 };
 export {
-  Re as ArrayUtils,
-  Be as CharUtils,
-  ct as DateUtils,
+  je as ArrayUtils,
+  Ke as CharUtils,
+  ft as DateUtils,
   y as DutyLink,
-  at as NumberUtils,
-  gt as ObjectUtils,
-  Ut as StringUtils,
-  Ie as Utils,
-  jt as default
+  gt as NumberUtils,
+  mt as ObjectUtils,
+  Yt as StringUtils,
+  Oe as Utils,
+  Ht as default
 };
