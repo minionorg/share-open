@@ -1,6 +1,6 @@
 {
   "name": "@minionorg/share",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "函数库,工具库",
   "main": "./index.umd.js",
   "module": "./index.es.js",
